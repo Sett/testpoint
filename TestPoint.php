@@ -10,15 +10,28 @@ class TestPoint
      * @var string
      */
     public $recordsFile = 'records.json';
+    
+    /**
+     * @var string
+     */
+    public $execLog = 'log.json';
+
+    /**
+     * @var bool
+     */
+    public $logExec = false;
 
     /**
      * @param string $player
      * @param array $tests
+     * @param bool $logExec
      */
-    public function __construct($player = '', $tests = [])
+    public function __construct($player = '', $tests = [], $logExec = false)
     {
         if($player && count($tests))
             $this->run($player, $tests);
+            
+        $this->logExec = $logExec;
     }
 
     /**
@@ -98,6 +111,10 @@ class TestPoint
     public function exec($test)
     {
         exec('phpunit ' . $test, $output);
+        
+        if($this->logExec)
+            file_put_contents($this->execLog, json_encode($output));
+        
         return $output;
     }
 }
