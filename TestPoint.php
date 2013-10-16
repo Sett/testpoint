@@ -93,5 +93,3 @@ class TestPoint
         return $output;
     }
 }
-
-$testPoint = new TestPoint('sett', ['../tests/application/models/PageTest']);
