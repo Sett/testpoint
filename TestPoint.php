@@ -51,8 +51,14 @@ class TestPoint
         {
             preg_match('/Tests:\s(\d).+Failures:\s(\d)/', $result, $pockets);// get the count of tests and failures
             $totalPoints = $pockets[1];// the count of tests
-            $losePoints = $pockets[2];
-            return ['OK' => false, 'data' => ['total' => $totalPoints, 'lose' => $losePoints]];
+            $losePoints  = $pockets[2];
+            return ['OK' => false, 
+                    'data' => 
+                        [
+                            'total' => $totalPoints, 
+                            'lose' => $losePoints
+                        ]
+                    ];
         }
     }
 
