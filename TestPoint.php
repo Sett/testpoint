@@ -7,6 +7,11 @@
 class TestPoint
 {
     /**
+     * Analyses logic
+     */
+    use Analyse;
+    
+    /**
      * @var string
      */
     public $recordsFile = 'records.json';
