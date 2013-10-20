@@ -12,6 +12,11 @@ class TestPoint
     use Analyse;
     
     /**
+     * Logging
+     */
+    use Log;
+    
+    /**
      * @var string
      */
     public $recordsFile = 'records.json';
@@ -76,20 +81,9 @@ class TestPoint
             $log[$player] = ['points' => 0, 'log' => []];
 
         if($result['OK'])
-        {
-            $log[$player]['points'] += $result['data'];
-            $log[$player]['log'][] = ['status' => 'WIN', 'datetime' => date('Y-m-d H:i:s'), 'points' => $result['data']];
-        }
+            $log = $this->logOk($log);
         else
-        {
-            $log[$player]['points'] -= $result['data']['lose'];
-            $log[$player]['log'][] = [
-                'status' => 'lose',
-                'datetime' => date('Y-m-d H:i:s'),
-                'points' => $result['data']['lose'],
-                'possible' => $result['data']['total']
-            ];
-        }
+            $log = $this->logFail($log);
 
         file_put_contents($this->recordsFile, json_encode($log));
     }
