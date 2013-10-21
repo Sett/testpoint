@@ -1,7 +1,19 @@
 <?php
-
+/**
+ * use TestPoint
+ */
 trait Log
 {
+  public function getLog()
+  {
+    return json_decode(file_get_contents($this->recordsFile), true);
+  }
+  
+  public function addToLog()
+  {
+    file_put_contents($this->recordsFile, json_encode($log));
+  }
+  
   public function logOk($log)
   {
     $log[$player]['points'] += $result['data'];
