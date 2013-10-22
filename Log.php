@@ -9,7 +9,7 @@ trait Log
     return json_decode(file_get_contents($this->recordsFile), true);
   }
   
-  public function addToLog()
+  public function addToLog($log)
   {
     file_put_contents($this->recordsFile, json_encode($log));
   }
