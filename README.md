@@ -22,7 +22,9 @@ Gain points for tests
 
 $testPoint = new TestPoint('developer name', ['path/to/test/1', 'path/to/test/2']);
 
+// Или указываем директорию, где лежат тесты (поддиректории поддерживаются):
 
+// $testPoint = new TestPoint('sett', 'path/to/tests');
 
 Как видно, использовать можно по крону или любому таймеру, какой у вас используется, например, при CI.
 Результаты сейчас выглядят примерно так:
@@ -30,9 +32,6 @@ $testPoint = new TestPoint('developer name', ['path/to/test/1', 'path/to/test/2'
 <?php
 
 $testPoint = new TestPoint('sett', ['Mytest']);
-// Или указываем директорию, где лежат тесты (поддиректории поддерживаются):
-// $testPoint = new TestPoint('sett', 'path/to/tests');
-
 
 Result:
 <pre>
