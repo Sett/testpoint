@@ -76,7 +76,7 @@ class TestPoint
      */
     public function log($player, $result)
     {
-        $log = json_decode(file_get_contents($this->recordsFile), true);
+        $log = $this->getLog();
         if(!isset($log[$player]))
             $log[$player] = ['points' => 0, 'log' => []];
 
@@ -85,7 +85,7 @@ class TestPoint
         else
             $log = $this->logFail($log);
 
-        file_put_contents($this->recordsFile, json_encode($log));
+        $this->addToLog($log);
     }
 
     /**
