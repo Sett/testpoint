@@ -16,7 +16,7 @@ trait File.php
       }
     }
     else
-      $directories[] = $directory
+      $directories[] = $directory;
     
     $files = [];
     
