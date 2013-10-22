@@ -4,6 +4,10 @@
  * @author Sett
  * @version 0.0.0.1
  */
+ require_once 'modules/Analyse.php';
+ require_once 'modules/Log.php';
+ require_once 'modules/Test.php';
+ 
 class TestPoint
 {
     /**
@@ -15,6 +19,11 @@ class TestPoint
      * Logging
      */
     use Log;
+    
+    /**
+     * For working with test-files
+     */
+    use Test;
     
     /**
      * @var string
@@ -33,11 +42,13 @@ class TestPoint
 
     /**
      * @param string $player
-     * @param array $tests
+     * @param array|string $tests tests names or a directory name, where tests are stored
      * @param bool $logExec
      */
     public function __construct($player = '', $tests = [], $logExec = false)
     {
+        $tests = is_array($tests) ? $tests : $this->getTests($tests);
+        
         if($player && count($tests))
             $this->run($player, $tests);
             
