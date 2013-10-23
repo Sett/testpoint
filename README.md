@@ -31,10 +31,10 @@ $testPoint = new TestPoint('developer name', ['path/to/test/1', 'path/to/test/2'
 
 <?php
 
-$testPoint = new TestPoint('sett', ['Mytest']);
+* $testPoint = new TestPoint('sett', ['Mytest']);
 
 Result:
-
+<pre>
   {
     "sett":
     {
@@ -48,4 +48,4 @@ Result:
       ]
     }
   }
-
+</pre>
