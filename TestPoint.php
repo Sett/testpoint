@@ -20,7 +20,7 @@ class TestPoint
     use Test;
     
     /**
-     * exec for PHPUnit
+     * exec and analysis for PHPUnit
      */
     use PHPUnit;
     
