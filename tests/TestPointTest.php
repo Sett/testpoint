@@ -3,24 +3,19 @@ require_once __DIR__ . '/../TestPoint.php';
 
 class TestPointTest extends PHPUnit_Framework_TestCase
 {
-  // todo: write own test (((:
   /**
    * @dataProvider testProvider
    */
-  public function testTP($player, $result)
+  public function testTP($player, $test)
   {
-    $testPoint = new TestPoint($player, [__DIR__ . '/TestExample.php']);
-    $testPoint->log($player, $result);
+    $testPoint = new TestPoint($player, [__DIR__ . '/' . $test]);
   }
   
   public function testProvider()
   {
     return [
-      ['empty', []],
-      ['okTrue', ['OK' => true]],
-      ['okFalse', ['OK' => false]],
-      ['fullDataOK', ['OK' => true, 'data' => 5]],
-      ['fullDataFail', ['OK' => true, 'data' => ['total' => 4, 'lose' => 1]]]
+      ['correct test', 'TestExample'],
+      ['failed test', 'TestIncorrect']
     ];
   }
 }
