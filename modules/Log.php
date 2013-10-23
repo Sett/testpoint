@@ -6,7 +6,10 @@ trait Log
 {
   public function getLog()
   {
-    return json_decode(file_get_contents($this->recordsFile), true);
+    if(is_file($this->recordsFile))
+      return json_decode(file_get_contents($this->recordsFile), true);
+      
+    return [];
   }
   
   public function addToLog($log)
