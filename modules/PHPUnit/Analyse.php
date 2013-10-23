@@ -1,6 +1,6 @@
 <?php
 
-trait Analyse
+trait PHPUnit_Analyse
 {
   public function analyseOk($result)
   {
