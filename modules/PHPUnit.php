@@ -4,6 +4,8 @@
  */
 trait PHPUnit
 {
+  use PHPUnit_Analyse;
+  
   /**
    * @param string $test
    * @return array
