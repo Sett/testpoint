@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../TestPoint.php';
 
 class TestPointTest extends PHPUnit_Framework_TestCase
 {
