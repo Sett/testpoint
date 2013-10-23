@@ -2,6 +2,18 @@
 
 trait PHPUnit_Analyse
 {
+  /**
+   * @param string $result
+   * @return array
+   */
+  public function analyse($result)
+  {
+      if(strpos($result, 'OK') !== false)
+          return $this->analyseOk($result);
+      else
+          return $this->analyseFail($result);
+  }
+  
   public function analyseOk($result)
   {
       preg_match('/.+\((\d+)\s.+/', $result, $pockets);// get the count of tests
