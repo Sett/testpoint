@@ -1,6 +1,6 @@
 <?php
 
-trait File.php
+trait File
 {
   public function getFiles($directory, $fileMask, $lookInSubdirs = false)
   {
