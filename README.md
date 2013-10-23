@@ -34,18 +34,18 @@ $testPoint = new TestPoint('developer name', ['path/to/test/1', 'path/to/test/2'
 $testPoint = new TestPoint('sett', ['Mytest']);
 
 Result:
-<pre>
-{
-  "sett":
+
   {
-    "points":8,
-    "log":
-    [
-      {"status":"WIN","datetime":"2013-10-16 17:21:47","points":"3"},
-      {"status":"WIN","datetime":"2013-10-16 17:23:37","points":"3"},
-      {"status":"lose","datetime":"2013-10-16 17:33:26","points":"1","possible":"3"},
-      {"status":"WIN","datetime":"2013-10-16 17:33:32","points":"3"}
-    ]
+    "sett":
+    {
+      "points":8,
+      "log":
+      [
+        {"status":"WIN","datetime":"2013-10-16 17:21:47","points":"3"},
+        {"status":"WIN","datetime":"2013-10-16 17:23:37","points":"3"},
+        {"status":"lose","datetime":"2013-10-16 17:33:26","points":"1","possible":"3"},
+        {"status":"WIN","datetime":"2013-10-16 17:33:32","points":"3"}
+      ]
+    }
   }
-}
-</pre>
+
