@@ -26,6 +26,11 @@ class TestPoint
     use Test;
     
     /**
+     * exec for PHPUnit
+     */
+    use PHPUnit;
+    
+    /**
      * @var string
      */
     public $recordsFile = 'records.json';
@@ -97,19 +102,5 @@ class TestPoint
             $log = $this->logFail($log);
 
         $this->addToLog($log);
-    }
-
-    /**
-     * @param string $test
-     * @return array
-     */
-    public function exec($test)
-    {
-        exec('phpunit ' . $test, $output);
-        
-        if($this->logExec)
-            file_put_contents($this->execLog, json_encode($output));
-        
-        return $output;
     }
 }
