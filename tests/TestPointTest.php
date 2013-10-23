@@ -9,7 +9,7 @@ class TestPointTest extends PHPUnit_Framework_TestCase
    */
   public function testTP($player, $result)
   {
-    $testPoint = new TestPoint($player, ['TestExample.php']);
+    $testPoint = new TestPoint($player, [__DIR__ . '/TestExample.php']);
     $testPoint->log($player, $result);
   }
   
