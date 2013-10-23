@@ -6,6 +6,7 @@
  */
 require_once 'modules/Log.php';
 require_once 'modules/Test.php';
+require_once 'modules/PHPUnit.php';
  
 class TestPoint
 {
