@@ -4,17 +4,11 @@
  * @author Sett
  * @version 0.0.0.1
  */
- require_once 'modules/Analyse.php';
- require_once 'modules/Log.php';
+  require_once 'modules/Log.php';
  require_once 'modules/Test.php';
  
 class TestPoint
 {
-    /**
-     * Analyses logic
-     */
-    use Analyse;
-    
     /**
      * Logging
      */
