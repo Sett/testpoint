@@ -86,9 +86,9 @@ class TestPoint
             $log[$player] = ['points' => 0, 'log' => []];
 
         if($result['OK'])
-            $log = $this->logOk($log);
+            $log = $this->logOk($log, $result);
         else
-            $log = $this->logFail($log);
+            $log = $this->logFail($log, $result);
 
         $this->addToLog($log);
     }
