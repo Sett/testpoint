@@ -2,6 +2,8 @@
 /**
  * @use Log
  */
+require_once 'PHPUnit/Analyse.php';
+ 
 trait PHPUnit
 {
   use PHPUnit_Analyse;
