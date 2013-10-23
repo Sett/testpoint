@@ -14,14 +14,14 @@ trait Log
     file_put_contents($this->recordsFile, json_encode($log));
   }
   
-  public function logOk($log)
+  public function logOk($log, $result)
   {
     $log[$player]['points'] += $result['data'];
     $log[$player]['log'][] = ['status' => 'WIN', 'datetime' => date('Y-m-d H:i:s'), 'points' => $result['data']];
     return $log;
   }
   
-  public function logFail($log)
+  public function logFail($log, $result)
   {
     $log[$player]['points'] -= $result['data']['lose'];
     $log[$player]['log'][] = [
