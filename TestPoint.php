@@ -75,18 +75,6 @@ class TestPoint
     }
 
     /**
-     * @param string $result
-     * @return array
-     */
-    public function analyse($result)
-    {
-        if(strpos($result, 'OK') !== false)
-            return $this->analyseOk($result);
-        else
-            return $this->analyseFail($result);
-    }
-
-    /**
      * @param string $player
      * @param array $result
      */
