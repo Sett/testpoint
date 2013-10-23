@@ -24,8 +24,8 @@ trait PHPUnit_Analyse
   public function analyseFail($result)
   {
       preg_match('/Tests:\s(\d+).+(Failures:\s(\d))*/', $result, $pockets);// get the count of tests and failures
-      $totalPoints = $pockets[1];// the count of tests
-      $losePoints  = $pockets[2];
+      $totalPoints = isset($pockets[1]) ? $pockets[1] : 0;// the count of tests
+      $losePoints  = isset($pockets[2]) ? $pockets[2] : 0;
       return ['OK' => false, 
               'data' => 
                   [
