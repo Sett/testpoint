@@ -66,12 +66,18 @@ class TestPoint
      */
     public function run($player, $tests)
     {
+        $logData = [];
+        
         foreach($tests as $test)
         {
             $result = $this->exec($test);
+            $logData = array_merge($logData, $result);
             $result = array_pop($result);
             $this->log($player, $this->analyse($result));
         }
+        
+        if($this->logExec)
+            file_put_contents($this->execLog, json_encode($logData));
     }
 
     /**
