@@ -32,7 +32,7 @@ $testPoint = new TestPoint('developer name', ['path/to/test/1', 'path/to/test/2'
 
 <?php
 
-``` $testPoint = new TestPoint('sett', ['Mytest']);```
+``` $testPoint = new TestPoint('sett', ['path/to/Mytest.php']);```
 
 Result:
 <pre>
@@ -42,10 +42,10 @@ Result:
       "points":8,
       "log":
       [
-        {"status":"WIN","datetime":"2013-10-16 17:21:47","points":"3"},
-        {"status":"WIN","datetime":"2013-10-16 17:23:37","points":"3"},
-        {"status":"lose","datetime":"2013-10-16 17:33:26","points":"1","possible":"3"},
-        {"status":"WIN","datetime":"2013-10-16 17:33:32","points":"3"}
+        {"status":"WIN","datetime":"<текущая дата>","points":"3"},
+        {"status":"WIN","datetime":"<текущая дата>","points":"3"},
+        {"status":"lose","datetime":"<текущая дата>","points":"1","possible":"3"},
+        {"status":"WIN","datetime":"<текущая дата>","points":"3"}
       ]
     }
   }
