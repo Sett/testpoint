@@ -13,7 +13,7 @@ trait Mode
     'default' => '$talk' . "\n"
   ];
   
-  public function say($text, $type)
+  public function say($text, $type = 'default')
   {
     if(($this->mode == 'talk') && isset($this->talkTypes[$type]))
       echo str_replace('$talk', $text, $this->talkTypes[$type]);
