@@ -2,6 +2,14 @@
 
 trait File
 {
+  public function getJson($path, $asArray = true)
+  {
+    if(is_file($path))
+      return json_decode(file_get_contents($path), $asArray);
+      
+    return [];
+  }
+  
   public function getFiles($directory, $fileMask, $lookInSubdirs = false)
   {
     $directories = [];
