@@ -82,7 +82,7 @@ class TestPoint
         if($this->logExec)
         {
           $this->say('Logging testing output into ' . $this->execLog);
-          file_put_contents($this->execLog, json_encode($logData));
+          file_put_contents($this->execLog, "[" . date('Y-m-d H:i:s') . "]\n" . implode("\n", $logData) . "\n\n");
         }
     }
 
