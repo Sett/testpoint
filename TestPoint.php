@@ -8,9 +8,15 @@ require_once 'modules/Log/File/Json.php';
 require_once 'modules/Test.php';
 require_once 'modules/PHPUnit.php';
 require_once 'modules/Mode.php';
+require_once 'modules/Config.php';
  
 class TestPoint
 {
+    /**
+     * TP configuration
+     */
+    use Config;
+ 
     /**
      * Logging
      */
@@ -53,6 +59,7 @@ class TestPoint
      */
     public function __construct($player = '', $tests = [], $logExec = false)
     {
+        $this->applyConfig(__DIR__ . '/application/configs/onload.json');
         $this->say('Constructing TestPoint for "' . $player . '"', 'h1');
         $tests = $this->getTests($tests);
         $this->logExec = $logExec;
