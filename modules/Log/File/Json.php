@@ -4,7 +4,7 @@
  */
 trait Log_File_Json
 {
-  public function getLog($fileName = 'records.json')
+  public function getLog()
   {
     if(is_file($this->recordsFile))
       return json_decode(file_get_contents($this->recordsFile), true);
