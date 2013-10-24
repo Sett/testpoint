@@ -60,7 +60,8 @@ Result:
 
 Если у вас установлен PHPUnit и есть рнр >= 5.4, то после запуска у вас:
 
-1. В консоли отобразится ход "игры":
+* В консоли отобразится ход "игры":
+
 ```
 /var/www/testpoint$ php tryme.php 
 
@@ -75,7 +76,9 @@ Save results into records.json
 Logging testing output into log.json
 
 ```
-2. Должен появиться файлик `records.json`: 
+
+* Должен появиться файлик `records.json`: 
+
 
 ```
 {
@@ -95,7 +98,9 @@ Logging testing output into log.json
     }
 }
 ```
-3. Должен появиться лог `log.json`:
+
+* Должен появиться лог `log.json`:
+
 ```
 [<текущая дата>]
 PHPUnit 3.6.10 by Sebastian Bergmann.
