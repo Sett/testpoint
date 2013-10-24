@@ -18,6 +18,7 @@ trait PHPUnit_Analyse
   {
       preg_match('/.+\((\d+)\s.+/', $result, $pockets);// get the count of tests
       $points = $pockets[1];// for each test gain 1 point
+      $this->say('Gained ' . $points . ' point(s)');
       return ['OK' => true, 'data' => $points];
   }
   
@@ -28,6 +29,7 @@ trait PHPUnit_Analyse
       $totalPoints = isset($pockets[1]) ? $pockets[1] : 0;// the count of tests
       $losePoints  = isset($pockets[5]) ? $pockets[5] : 0;// the count of errors
       $losePoints  += isset($pockets[7]) ? $pockets[7] : 0;// the count of failures
+      $this->say('Losing ' . $losePoints . ' point(s)');
       return ['OK' => false, 
               'data' => 
                   [
