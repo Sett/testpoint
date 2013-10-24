@@ -60,7 +60,21 @@ Result:
 
 Если у вас установлен PHPUnit и есть рнр >= 5.4, то после запуска у вас:
 
-1. В консоли отобразится ход "игры".
+1. В консоли отобразится ход "игры":
+```
+/var/www/testpoint$ php tryme.php 
+
+=====| Constructing TestPoint for "sett" |=====
+Tests for playing: /var/www/testPoint/tests/TestPointTest.php
+
+===| Start test(s) |===
+Run /var/www/testPoint/tests/TestPointTest.php
+Gained 3 point(s)
+Save results into records.json
+
+Logging testing output into log.json
+
+```
 2. Должен появиться файлик `records.json`: 
 
 ```
@@ -80,4 +94,35 @@ Result:
         "log":[{"status":"WIN","datetime":"<текущая дата>","points":"3"}]
     }
 }
+```
+3. Должен появиться лог `log.json`:
+```
+[<текущая дата>]
+PHPUnit 3.6.10 by Sebastian Bergmann.
+
+.
+=====| Constructing TestPoint for "correct test" |=====
+Tests for playing: /var/www/testpoint/tests/TestExample
+
+===| Start test(s) |===
+Run /var/www/testpoint/tests/TestExample
+Gained 1 point(s)
+Save results into records.json
+
+.
+=====| Constructing TestPoint for "failed test" |=====
+Tests for playing: /var/www/testpoint/tests/TestIncorrect
+
+===| Start test(s) |===
+Run /var/www/testPoint/tests/TestIncorrect
+Losing 1 point(s)
+Save results into records.json
+
+.
+
+Time: 0 seconds, Memory: 2.25Mb
+
+OK (3 tests, 0 assertions)
+
+
 ```
