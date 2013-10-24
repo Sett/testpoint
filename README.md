@@ -42,10 +42,10 @@ Result:
       "points":8,
       "log":
       [
-        {"status":"WIN","datetime":"<текущая дата>","points":"3"},
-        {"status":"WIN","datetime":"<текущая дата>","points":"3"},
-        {"status":"lose","datetime":"<текущая дата>","points":"1","possible":"3"},
-        {"status":"WIN","datetime":"<текущая дата>","points":"3"}
+        {"status":"WIN","datetime":"текущая дата","points":"3"},
+        {"status":"WIN","datetime":"текущая дата","points":"3"},
+        {"status":"lose","datetime":"текущая дата","points":"1","possible":"3"},
+        {"status":"WIN","datetime":"текущая дата","points":"3"}
       ]
     }
   }
