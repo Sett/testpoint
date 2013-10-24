@@ -7,11 +7,11 @@ trait Mode
   public $mode = 'talk';
   
   public $talkTypes = [
-    'h1' => "\n" . '=====| $talk |=====' . "\n",
-    'h2' => "\n" . '===| $talk |===' . "\n",
-    'startOfEpisode' => "\n" . '$talk' . "\n",
-    'endOfEpisode' => '$talk' . "\n\n",
-    'default' => '$talk' . "\n"
+    'h1' => "\n=====| $talk |=====\n",
+    'h2' => "\n===| $talk |===\n",
+    'startOfEpisode' => "\n$talk\n",
+    'endOfEpisode' => "$talk\n\n",
+    'default' => "$talk\n"
   ];
   
   public function say($text, $type = 'default')
