@@ -7,8 +7,9 @@ trait Mode
   public $mode = 'talk';
   
   public $talkTypes = [
-    'h1' => '=====| $talk |=====' . "\n",
-    'h2' => '===| $talk |===' . "\n",
+    'h1' => "\n" . '=====| $talk |=====' . "\n",
+    'h2' => "\n" . '===| $talk |===' . "\n",
+    'startOfEpisode' => "\n" . '$talk' . "\n",
     'endOfEpisode' => '$talk' . "\n\n",
     'default' => '$talk' . "\n"
   ];
