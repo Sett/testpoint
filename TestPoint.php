@@ -54,7 +54,7 @@ class TestPoint
     public function __construct($player = '', $tests = [], $logExec = false)
     {
         $this->say('Constructing TestPoint for "' . $player . '"', 'h1');
-        $tests = is_array($tests) ? $tests : $this->getTests($tests);
+        $tests = $this->getTests($tests);
         $this->logExec = $logExec;
         
         if($player && count($tests))
