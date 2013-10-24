@@ -4,7 +4,7 @@
  * @author Sett
  * @version 0.0.0.1
  */
-require_once 'modules/Log.php';
+require_once 'modules/Log/File/Json.php';
 require_once 'modules/Test.php';
 require_once 'modules/PHPUnit.php';
  
@@ -13,7 +13,7 @@ class TestPoint
     /**
      * Logging
      */
-    use Log;
+    use Log_File_Json;
     
     /**
      * For working with test-files
