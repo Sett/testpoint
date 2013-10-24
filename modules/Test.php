@@ -1,6 +1,7 @@
 <?php
 
 require_once 'File.php';
+require_once 'Filter/Test.php';
 
 trait Test
 {
@@ -8,6 +9,11 @@ trait Test
    * For working with files
    */
   use File;
+  
+  /**
+   * For filtering tests to execute
+   */
+  use Filter_Test;
   
   public function getTests($directory)
   {
@@ -22,6 +28,7 @@ trait Test
         $tests = $this->getFiles($directory, '/*.php', true);
     }
 
+    $tests = $this->filterTests($tests);
 
     return $tests;
   }
