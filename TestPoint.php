@@ -48,11 +48,10 @@ class TestPoint
     public function __construct($player = '', $tests = [], $logExec = false)
     {
         $tests = is_array($tests) ? $tests : $this->getTests($tests);
+        $this->logExec = $logExec;
         
         if($player && count($tests))
             $this->run($player, $tests);
-            
-        $this->logExec = $logExec;
     }
 
     /**
