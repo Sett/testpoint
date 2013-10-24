@@ -1,0 +1,21 @@
+{
+  "log" : 
+  {
+    "file" : "log.json",
+    "on" : 1,
+    
+  },
+  
+  "store":
+  {
+    "engine" : "file",
+    
+    "file" :
+    {
+      "name" : "records.json"
+    }
+  },
+  
+  "mode" : "talk",
+  "skipTests" :[],
+}
