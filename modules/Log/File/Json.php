@@ -14,6 +14,7 @@ trait Log_File_Json
   
   public function addToLog($log)
   {
+    $this->say('Save results into ' . $this->recordsFile, 'endOfEpisode');
     file_put_contents($this->recordsFile, json_encode($log));
   }
   
