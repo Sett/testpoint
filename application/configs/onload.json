@@ -16,5 +16,8 @@
   },
   
   "mode" : "talk",
-  "skipTests" :[]
+  "test" :
+  {
+    "skipTests" :[]
+  }
 }
