@@ -2,8 +2,7 @@
   "log" : 
   {
     "file" : "log.json",
-    "on" : 1,
-    
+    "on" : 1
   },
   
   "store":
@@ -17,5 +16,5 @@
   },
   
   "mode" : "talk",
-  "skipTests" :[],
+  "skipTests" :[]
 }
