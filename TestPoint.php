@@ -7,6 +7,7 @@
 require_once 'modules/Log/File/Json.php';
 require_once 'modules/Test.php';
 require_once 'modules/PHPUnit.php';
+require_once 'modules/Mode.php';
  
 class TestPoint
 {
@@ -24,6 +25,11 @@ class TestPoint
      * exec and analysis for PHPUnit
      */
     use PHPUnit;
+    
+    /**
+     * TestPoint mode: talk or silence
+     */
+    use Mode;
     
     /**
      * @var string
@@ -47,6 +53,7 @@ class TestPoint
      */
     public function __construct($player = '', $tests = [], $logExec = false)
     {
+        $this->say('Constructing TestPoint for "' . $player . '"', 'h1');
         $tests = is_array($tests) ? $tests : $this->getTests($tests);
         $this->logExec = $logExec;
         
@@ -60,10 +67,12 @@ class TestPoint
      */
     public function run($player, $tests)
     {
+        $this->say('Start test(s)', 'h2');
         $logData = [];
         
         foreach($tests as $test)
         {
+            $this->say('Run ' . $test);
             $result = $this->exec($test);
             $logData = array_merge($logData, $result);
             $result = array_pop($result);
@@ -71,7 +80,10 @@ class TestPoint
         }
         
         if($this->logExec)
-            file_put_contents($this->execLog, json_encode($logData));
+        {
+          $this->say('Logging testing output into ' . $this->execLog);
+          file_put_contents($this->execLog, json_encode($logData));
+        }
     }
 
     /**
