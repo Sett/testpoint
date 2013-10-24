@@ -16,12 +16,12 @@ trait Config
 
   public $config = null;
   
-  public function applyConfig()
+  public function applyConfig($path)
   {
       if(is_null($this->config))
       {
-        $this->loadConfig();
-        return $this->applyConfig();
+        $this->loadConfig($path);
+        return $this->applyConfig($path);
       }
       else
       {
