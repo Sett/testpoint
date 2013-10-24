@@ -8,9 +8,11 @@ trait File
     
     if($lookInSubdirs)
     {
+      $this->say($directory);
       $baseDir =$directory;
       while($dirs = glob($baseDir . '/*', GLOB_ONLYDIR))
       {
+          $this->say(implode("\n", $dirs));
           $directories = array_merge($directories, $dirs);
           $baseDir .= '/*';
       }
@@ -18,10 +20,18 @@ trait File
     else
       $directories[] = $directory;
     
+    $this->say('Directories to search : ' . count($directories), 'endOfEpisode');
+    
     $files = [];
     
+    $this->say('Found tests: ');
     foreach($directories as $dir)
-        $files = array_merge($files, glob($dir . $fileMask));
+    {
+      $found = glob($dir . $fileMask);
+      $this->say(implode(";\n", $found));
+      $files = array_merge($files, $found);
+    }
+    $this->say('total: ' . count($files));
         
     return $files;
   }
