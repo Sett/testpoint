@@ -11,6 +11,7 @@ trait Test
   
   public function getTests($directory)
   {
+    $this->say('Start looking tests in', 'startOfEpisode');
     return $this->getFiles($directory, '/*.php', true);
   }
 }
