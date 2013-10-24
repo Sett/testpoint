@@ -1,10 +1,11 @@
 <?php
 
+$configSections = ['Log', 'Test', 'Mode', 'Store'];
+
+foreach($configSections as $section)
+  require_once 'Config/' . $section . '.php';
+
 require_once 'File.php';
-require_once 'Config/Log.php';
-require_once 'Config/Test.php';
-require_once 'Config/Mode.php';
-require_once 'Config/Store.php';
 
 trait Config
 {
@@ -29,6 +30,8 @@ trait Config
         {
           if(property_exists($this, $property . 'ApplyConfig'))
             $this->{$property . 'ApplyConfig'}($data);
+          else
+            echo 'Unknown config section "' . $property . '"' . "\n";
         }
         
         return true;
