@@ -6,7 +6,7 @@ trait Config_Mode
   {
     if($data == 'talk')
       $this->mode = 'talk';
-      
-    $this->mode = 'silence';
+    else
+      $this->mode = 'silence';
   }
 }

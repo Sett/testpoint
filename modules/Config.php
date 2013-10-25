@@ -7,13 +7,16 @@ foreach($configSections as $section)
 
 require_once 'File.php';
 
+/**
+ * Class Config
+ * @use File
+ */
 trait Config
 {
-  use File;
-  use Config_Log;
-  use Config_Test;
-  use Config_Mode;
-  use Config_Store;
+  use Config_Log,
+      Config_Test,
+      Config_Mode,
+      Config_Store;
 
   public $config = null;
   
@@ -26,10 +29,14 @@ trait Config
       }
       else
       {
-        foreach($config as $property => $data)
+        $this->say('Applying config sections', 'h2');
+        foreach($this->config as $property => $data)
         {
-          if(property_exists($this, $property . 'ApplyConfig'))
-            $this->{$property . 'ApplyConfig'}($data);
+          if(method_exists($this, $property . 'ApplyConfig'))
+          {
+              $this->say(' - ' . $property);
+              $this->{$property . 'ApplyConfig'}($data);
+          }
           else
             echo 'Unknown config section "' . $property . '"' . "\n";
         }

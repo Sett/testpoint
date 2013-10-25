@@ -1,15 +1,13 @@
 <?php
 
-require_once 'File.php';
 require_once 'Filter/Test.php';
 
+/**
+ * Class Test
+ * @use File
+ */
 trait Test
 {
-  /**
-   * For working with files
-   */
-  use File;
-  
   /**
    * For filtering tests to execute
    */

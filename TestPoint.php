@@ -9,33 +9,39 @@ require_once 'modules/Test.php';
 require_once 'modules/PHPUnit.php';
 require_once 'modules/Mode.php';
 require_once 'modules/Config.php';
+require_once 'modules/File.php';
  
 class TestPoint
 {
     /**
      * TP configuration
      */
-    use Config;
+    use Config,
+
+    /**
+     * For working with files
+     */
+    File,
  
     /**
      * Logging
      */
-    use Log_File_Json;
+    Log_File_Json,
     
     /**
      * For working with test-files
      */
-    use Test;
+    Test,
     
     /**
      * exec and analysis for PHPUnit
      */
-    use PHPUnit;
+    PHPUnit,
     
     /**
      * TestPoint mode: talk or silence
      */
-    use Mode;
+    Mode;
     
     /**
      * @var string
