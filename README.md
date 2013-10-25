@@ -65,6 +65,12 @@ Result:
 ```
 /var/www/testpoint$ php tryme.php 
 
+===| Applying config sections |===
+ - log
+ - store
+ - mode
+ - test
+
 =====| Constructing TestPoint for "sett" |=====
 Tests for playing: /var/www/testPoint/tests/TestPointTest.php
 
