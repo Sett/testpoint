@@ -9,9 +9,9 @@ require_once 'File.php';
 
 /**
  * Class Config
- * @use File
+ * @use File, Mode
  */
-trait Config
+class Config
 {
   use Config_Log,
       Config_Test,
@@ -29,7 +29,7 @@ trait Config
       }
       else
       {
-        $this->say('Applying config sections', 'h2');
+        Talk::say('Applying config sections', 'h2');
         foreach($this->config as $property => $data)
         {
           if(method_exists($this, $property . 'ApplyConfig'))
@@ -38,7 +38,7 @@ trait Config
               $this->{$property . 'ApplyConfig'}($data);
           }
           else
-            echo 'Unknown config section "' . $property . '"' . "\n";
+            Talk::say('Unknown config section "' . $property . '"');
         }
         
         return true;
@@ -47,6 +47,6 @@ trait Config
   
   public function loadConfig($path)
   {
-      $this->config = $this->getJson($path);
+      $this->config = File::getJson($path);
   }
 }
