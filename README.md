@@ -65,16 +65,19 @@ Result:
 ```
 /var/www/testpoint$ php tryme.php 
 
-===| Applying config sections |===
+  =====| Constructing TestPoint for "sett" |=====
+
+    ===| Applying config sections |===
+    
  - log
  - store
  - mode
  - test
 
-=====| Constructing TestPoint for "sett" |=====
 Tests for playing: /var/www/testPoint/tests/TestPointTest.php
 
-===| Start test(s) |===
+    ===| Start test(s) |===
+  
 Run /var/www/testPoint/tests/TestPointTest.php
 Gained 3 point(s)
 Save results into records.json
