@@ -115,16 +115,20 @@ Logging testing output into log.json
 PHPUnit 3.6.10 by Sebastian Bergmann.
 
 .
+=====| Constructing TestPoint for "correct test" |=====
+
 ===| Applying config sections |===
+
  - log
  - store
  - mode
  - test
  
-=====| Constructing TestPoint for "correct test" |=====
+
 Tests for playing: /var/www/testpoint/tests/TestExample
 
 ===| Start test(s) |===
+
 Run /var/www/testpoint/tests/TestExample
 Gained 1 point(s)
 Save results into records.json
