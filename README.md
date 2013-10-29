@@ -65,16 +65,19 @@ Result:
 ```
 /var/www/testpoint$ php tryme.php 
 
-===| Applying config sections |===
+  =====| Constructing TestPoint for "sett" |=====
+
+    ===| Applying config sections |===
+    
  - log
  - store
  - mode
  - test
 
-=====| Constructing TestPoint for "sett" |=====
 Tests for playing: /var/www/testPoint/tests/TestPointTest.php
 
-===| Start test(s) |===
+    ===| Start test(s) |===
+  
 Run /var/www/testPoint/tests/TestPointTest.php
 Gained 3 point(s)
 Save results into records.json
@@ -112,16 +115,20 @@ Logging testing output into log.json
 PHPUnit 3.6.10 by Sebastian Bergmann.
 
 .
+=====| Constructing TestPoint for "correct test" |=====
+
 ===| Applying config sections |===
+
  - log
  - store
  - mode
  - test
  
-=====| Constructing TestPoint for "correct test" |=====
+
 Tests for playing: /var/www/testpoint/tests/TestExample
 
 ===| Start test(s) |===
+
 Run /var/www/testpoint/tests/TestExample
 Gained 1 point(s)
 Save results into records.json
