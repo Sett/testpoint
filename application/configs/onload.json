@@ -30,5 +30,54 @@
     "test" :
     {
         "skipTests" :[]
+    },
+    
+    "phpunit" : 
+    {
+        "log" : 
+        {
+            "turn" : "on",
+            "type" : "json",
+            "fileName": "pu-log.json"
+        },
+        
+        "coverage" :
+        {
+            "turn" : "on",
+            "type" : "html",
+            "fileName" : "pu-coverage"
+        },
+        
+        "doc" : 
+        {
+            "turn" : "on",
+            "type" : "html",
+            "fileName" : "pu-doc.html"
+        },
+        
+        "filter" :
+        {
+            "turn" : "on",
+            "pattern" : "",
+            "groups list" : [],
+            "group" : "",
+            "exclude": ""
+        },
+        
+        "self" : 
+        {
+            "loader" : "",
+            "printer": "",
+            "repeat" : "",
+            "process-isolation": "on",
+            "no-global-backup": "",
+            "static-backup": "",
+            "bootstrap" : "",
+            "c" : "",
+            "configuration" : "",
+            "no-configuration" : "",
+            "include-path" : [],
+            "d" : {}
+        }
     }
 }
