@@ -14,6 +14,10 @@ trait PHPUnit_Analyse
             return $this->analyseFail($result);
     }
 
+    /**
+     * @param string $result
+     * @return array
+     */
     public function analyseOk($result)
     {
         preg_match('/.+\((\d+)\s.+/', $result, $pockets);// get the count of tests
@@ -22,6 +26,10 @@ trait PHPUnit_Analyse
         return ['OK' => true, 'data' => $points];
     }
 
+    /**
+     * @param string $result
+     * @return array
+     */
     public function analyseFail($result)
     {
         $pattern = '/Tests:\s(\d+),\s*(Assertions:\s*(\d+))*,\s*(Errors:\s*(\d+))*\s*(Failures:\s*(\d+))*/';
