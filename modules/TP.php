@@ -1,49 +1,7 @@
 <?php
-/**
- * Class TestPoint
- * @author Sett
- * @version 0.0.0.1
- */
-require_once 'modules/Log/File/Json.php';
-require_once 'modules/Test.php';
-require_once 'modules/PHPUnit.php';
-require_once 'modules/Mode.php';
-require_once 'modules/Config.php';
-require_once 'modules/File.php';
- 
-class TestPoint
+
+trait TP
 {
-    /**
-     * TP configuration
-     */
-    use Config,
-
-    /**
-     * For working with files
-     */
-    File,
- 
-    /**
-     * Logging
-     */
-    Log_File_Json,
-    
-    /**
-     * For working with test-files
-     */
-    Test,
-    
-    /**
-     * exec and analysis for PHPUnit
-     */
-    PHPUnit,
-    
-    /**
-     * TestPoint mode: talk or silence
-     */
-    Mode;
-    
-
     /**
      * @var string
      */
@@ -62,10 +20,10 @@ class TestPoint
     public function __construct($player = '', $tests = [], $logExec = false)
     {
         $this->say('Constructing TestPoint for "' . $player . '"', 'h1');
-        $this->applyConfig(__DIR__ . '/application/configs/onload.json');
+        $this->applyConfig(__DIR__ . '/../application/configs/onload.json');
         $tests = $this->getTests($tests);
         $this->logExec = $logExec;
-        
+
         if($player && count($tests))
             $this->run($player, $tests);
     }
@@ -78,20 +36,20 @@ class TestPoint
     {
         $this->say('Start test(s)', 'h1');
         $logData = [];
-        
+
         foreach($tests as $test)
         {
-            $this->say($this->colorText('Run ', 'bold') . $test);
-            $result  = $this->exec($test);
+            $this->say('Run ' . $test);
+            $result = $this->exec($test);
             $logData = array_merge($logData, $result);
-            $result  = array_pop($result);
+            $result = array_pop($result);
             $this->log($player, $this->analyse($result));
         }
-        
+
         if($this->logExec)
         {
-          $this->say('Logging testing output into ' . $this->colorText($this->execLog, 'underline'), 'endOfEpisode');
-          file_put_contents($this->execLog, "[" . date('Y-m-d H:i:s') . "]\n" . implode("\n", $logData) . "\n\n");
+            $this->say('Logging testing output into ' . $this->execLog, 'endOfEpisode');
+            file_put_contents($this->execLog, "[" . date('Y-m-d H:i:s') . "]\n" . implode("\n", $logData) . "\n\n");
         }
     }
 

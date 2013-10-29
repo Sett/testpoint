@@ -1,23 +1,34 @@
 {
-  "log" : 
-  {
-    "file" : "log.json",
-    "on" : 1
-  },
-  
-  "store":
-  {
-    "engine" : "file",
-    
-    "file" :
+    "traits" :
+    [
+        "TP",
+        "Config",
+        "File",
+        "Log_File_Json",
+        "Test",
+        "PHPUnit",
+        "Mode"
+    ],
+
+    "log" :
     {
-      "name" : "records.json"
+        "file" : "log.json",
+        "on" : 1
+    },
+
+    "store":
+    {
+        "engine" : "file",
+
+        "file" :
+        {
+            "name" : "records.json"
+        }
+    },
+
+    "mode" : "talk",
+    "test" :
+    {
+        "skipTests" :[]
     }
-  },
-  
-  "mode" : "talk",
-  "test" :
-  {
-    "skipTests" :[]
-  }
 }

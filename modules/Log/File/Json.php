@@ -4,6 +4,8 @@
  */
 trait Log_File_Json
 {
+    public $recordsFile = 'records.json';
+
   public function getLog()
   {
     if(is_file($this->recordsFile))
@@ -14,7 +16,7 @@ trait Log_File_Json
   
   public function addToLog($log)
   {
-    $this->say('Save results into ' . $this->recordsFile, 'endOfEpisode');
+    $this->say('Save results into ' . $this->colorText($this->recordsFile, 'underline'), 'endOfEpisode');
     file_put_contents($this->recordsFile, json_encode($log));
   }
   
