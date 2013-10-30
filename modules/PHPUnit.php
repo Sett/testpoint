@@ -112,7 +112,7 @@ trait PHPUnit
             foreach($this->config['self'] as $arg => $value)
             {
                 if(isset($args[$arg]))
-                    $result .= $this->getSelfFlag($arg, $value) . ' ';
+                    $result .= $this->getSelfFlag($arg, $args[$arg]) . ' ';
             }
         }
 
