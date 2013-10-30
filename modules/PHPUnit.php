@@ -54,7 +54,7 @@ trait PHPUnit
         foreach($flags as $flag)
             $flagsResult .= method_exists($this, $flag . 'ApplyFlag') ? $this->{$flag . 'ApplyFlag'}() . ' ' : '';
 
-        exec('phpunit ' . $test, $output);
+        exec('phpunit ' . $flagsResult . $test, $output);
         return $output;
     }
 
