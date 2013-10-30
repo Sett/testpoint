@@ -72,7 +72,7 @@
             "process-isolation": "on",
             "no-global-backup": "",
             "static-backup": "",
-            "bootstrap" : "../../openastra/ocweb/tests/bootstrap.php",
+            "bootstrap" : "",
             "configuration" : "",
             "no-configuration" : ""
         },
