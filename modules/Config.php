@@ -18,7 +18,8 @@ trait Config
         Config_Test,
         Config_Mode,
         Config_Store,
-        Config_Traits;
+        Config_Traits,
+        Config_PHPUnit;
 
     public $config = null;
   

@@ -51,8 +51,12 @@ trait PHPUnit
     {
         $flagsResult = '';
 
-        foreach($flags as $flag)
+        $flags = empty($flags) ? $this->config['phpunit'] : $flags;
+
+        foreach($flags as $flag => $data)
             $flagsResult .= method_exists($this, $flag . 'ApplyFlag') ? $this->{$flag . 'ApplyFlag'}() . ' ' : '';
+
+        $this->say('Launch ' . $this->colorText('phpunit ' . $flagsResult . $test, 'bold'));
 
         exec('phpunit ' . $flagsResult . $test, $output);
         return $output;
@@ -84,7 +88,7 @@ trait PHPUnit
         $value  = $this->getFlagInfo('self', $name);// "phpunit" : { "self" : {$name : $value} }
         $result = ($value != '') ? '--' . $name : '';
 
-        return $useFlag ? $result . ' ' . $value : $result;
+        return $useFlag ? $result . ' ' . $value . ' ' : $result . ' ';
     }
 
     /**
@@ -94,7 +98,7 @@ trait PHPUnit
     {
         $result = '';
 
-        if(isset($this->config['self']))
+        if(isset($this->config['phpunit']['self']))
         {
             $args = [
                 'loader'            => true,
@@ -109,10 +113,10 @@ trait PHPUnit
                 'no-configuration'  => false
             ];
 
-            foreach($this->config['self'] as $arg => $value)
+            foreach($this->config['phpunit']['self'] as $arg => $value)
             {
                 if(isset($args[$arg]))
-                    $result .= $this->getSelfFlag($arg, $args[$arg]) . ' ';
+                    $result .= $this->getSelfFlag($arg, $args[$arg]);
             }
         }
 
@@ -130,7 +134,7 @@ trait PHPUnit
     /**
      * @return string
      */
-    public function docApplyFlag()
+    public function testdoxApplyFlag()
     {
         return $this->getFileTypeFlag('testdox');
     }
@@ -151,10 +155,10 @@ trait PHPUnit
             if($filter['group'])
                 $result .= ' --group ' . $filter['group'];
 
-            if($filter['exclude-group'])
+            if(isset($filter['exclude-group']) && $filter['exclude-group'])
                 $result .= ' --exclude-group ' . $filter['exclude-group'];
 
-            if($filter['list-groups'])
+            if(isset($filter['list-groups']) && $filter['list-groups'])
                 $result .= '--list-groups ' . implode(',', $filter['list-groups']);
         }
 
@@ -184,7 +188,7 @@ trait PHPUnit
      */
     public function dApplyFlag()
     {
-        return (($d = $this->getFlagInfo('self', 'd')) == []) ? '' : $this->array_glue($d, '=', ' -d ');
+        return (($d = $this->getFlagInfo('d', '', true)) == []) ? '' : $this->array_glue($d, '=', ' -d ');
     }
 
     /**
