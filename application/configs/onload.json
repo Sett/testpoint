@@ -74,13 +74,11 @@
             "static-backup": "",
             "bootstrap" : "",
             "configuration" : "",
-            "no-configuration" : "",
-            "include-path" : []
+            "no-configuration" : ""
         },
+        
+        "includePath" : [],
 
-        "d" :
-        {
-
-        }
+        "d" : {}
     }
 }
