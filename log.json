@@ -1,49 +1,5 @@
-[2013-10-29 14:31:52]
+[2013-10-29 16:18:17]
 PHPUnit 3.6.10 by Sebastian Bergmann.
 
-.
-  [36;1m=====| Constructing TestPoint for "correct test" |=====[0m
-
-
-    [32;1m===| Applying config sections |===[0m
-
-  - [1mtraits[0m
-  - [1mlog[0m
-  - [1mstore[0m
-  - [1mmode[0m
-  - [1mtest[0m
-
- [1m[33mTests for playing: [0m/var/www/testPoint/testpoint/tests/TestExample
-
-  [36;1m=====| Start test(s) |=====[0m
-
- [1mRun [0m/var/www/testPoint/testpoint/tests/TestExample
- [1mGained 1 point(s)[0m
- Save results into [4mrecords.json[0m
-
-.
-  [36;1m=====| Constructing TestPoint for "failed test" |=====[0m
-
-
-    [32;1m===| Applying config sections |===[0m
-
-  - [1mtraits[0m
-  - [1mlog[0m
-  - [1mstore[0m
-  - [1mmode[0m
-  - [1mtest[0m
-
- [1m[33mTests for playing: [0m/var/www/testPoint/testpoint/tests/TestIncorrect
-
-  [36;1m=====| Start test(s) |=====[0m
-
- [1mRun [0m/var/www/testPoint/testpoint/tests/TestIncorrect
- Losing 1 point(s)
- Save results into [4mrecords.json[0m
-
-.
-
-Time: 0 seconds, Memory: 2.25Mb
-
-OK (3 tests, 0 assertions)
+.................
 

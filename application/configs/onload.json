@@ -48,7 +48,7 @@
             "fileName" : "pu-coverage"
         },
         
-        "doc" : 
+        "testdox" :
         {
             "turn" : "on",
             "type" : "html",
@@ -73,11 +73,14 @@
             "no-global-backup": "",
             "static-backup": "",
             "bootstrap" : "",
-            "c" : "",
             "configuration" : "",
             "no-configuration" : "",
-            "include-path" : [],
-            "d" : {}
+            "include-path" : []
+        },
+
+        "d" :
+        {
+
         }
     }
 }
