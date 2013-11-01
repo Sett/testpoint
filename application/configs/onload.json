@@ -23,6 +23,17 @@
         "file" :
         {
             "name" : "records.json"
+        },
+        
+        "db" : 
+        {
+            "mysql" : 
+            {
+                "host" : "localhost",
+                "user" : "tp",
+                "password" : "tp"
+                "db" : "testpoint"
+            }
         }
     },
 
