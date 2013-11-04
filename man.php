@@ -1,8 +1,8 @@
 <?php
 require_once 'modules/lib/Manager.php';
 
-TestPoint_Manager::compile('TestManager', 'application/configs/onload.json', 'modules/');
+TestPoint_Manager::compile('TestPoint', 'application/configs/onload.json', 'modules/');
 
-require_once 'TestManager.php';
+require_once 'TestPoint.php';
 
-$tp = new Testmanager('sett', [__DIR__ . '/tests/TestPointTest.php'], true);
+$tp = new TestPoint('sett', [__DIR__ . '/tests/TestPointTest.php'], true);
