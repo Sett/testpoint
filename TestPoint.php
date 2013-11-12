@@ -58,11 +58,15 @@ class TestPoint
      * @param string $player
      * @param array|string $tests tests names or a directory name, where tests are stored
      * @param bool $logExec
+     * @param string $onLoadConfig path/to/file
      */
-    public function __construct($player = '', $tests = [], $logExec = false)
+    public function __construct($player = '', $tests = [], $logExec = false, $onLoadConfig = '')
     {
         $this->say('Constructing TestPoint for "' . $player . '"', 'h1');
-        $this->applyConfig(__DIR__ . '/application/configs/onload.json');
+        
+        $config = $onLoadConfig ? $onLoadConfig : __DIR__ . '/application/configs/onload.json';
+        $this->applyConfig($config);
+        
         $tests = $this->getTests($tests);
         $this->logExec = $logExec;
         
@@ -93,6 +97,8 @@ class TestPoint
           $this->say('Logging testing output into ' . $this->colorText($this->execLog, 'underline'), 'endOfEpisode');
           file_put_contents($this->execLog, "[" . date('Y-m-d H:i:s') . "]\n" . implode("\n", $logData) . "\n\n");
         }
+        
+        $this->output();
     }
 
     /**
