@@ -27,6 +27,11 @@ trait Mode_Talk
         'endOfEpisode' => " #talk\n\n",
         'default' => " #talk\n"
     ];
+    
+    /**
+     * @var string
+     */
+    public $output = '';    
 
     /**
      * @param string $text
@@ -50,10 +55,34 @@ trait Mode_Talk
     /**
      * @param string $text
      * @param string $type
+     * @param bool $return return string - not add to the output
+     * @return $this|string
      */
-    public function say($text = 'Hello World', $type = 'default')
+    public function say($text = 'Hello World', $type = 'default', $return = false)
     {
-        if(($this->mode == 'talk') && isset($this->talkTypes[$type]))
-            echo str_replace('#talk', $text, $this->talkTypes[$type]);
+        if(isset($this->talkTypes[$type]))
+        {
+            $result = str_replace('#talk', $text, $this->talkTypes[$type]);
+            if($return)
+                return $result;
+
+            $this->output .= $result;
+        }
+
+        return $this;
+    }
+    
+    /**
+     * @param string $singlePhrase
+     */
+    public function output($singlePhrase = '')
+    {
+        if($this->mode == 'talk')
+        {
+            if($singlePhrase)
+                echo $singlePhrase;
+            else
+                echo $this->output;
+        }
     }
 }
