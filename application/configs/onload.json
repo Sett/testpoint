@@ -40,7 +40,8 @@
     "mode" : "talk",
     "test" :
     {
-        "skipTests" :[]
+        "skipTests" :[],
+        "test-to-test time": 300
     },
     
     "phpunit" : 
