@@ -30,4 +30,20 @@ trait Test
 
         return $tests;
     }
+    
+    /**
+     * @param int $points
+     * @param int $lastTestTime
+     * @return int
+     */
+    public function truePoints($points, $lastTestTime)
+    {
+        // very simple: if you too regular start your tests, than you will be punished
+        $trueControl = time() - $lastTestTime - $this->t2tTime;
+
+        if($trueControl < 0)
+            return $points + $trueControl;
+
+        return $points;
+    }
 }
