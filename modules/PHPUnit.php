@@ -43,6 +43,26 @@ trait PHPUnit
     use ArrayLib;
 
     /**
+     * @param array $result
+     * @return mixed
+     */
+    public function getResultLine(array $result)
+    {
+        $resultLine  = array_pop($result);
+
+        $start = time();
+
+        while(strpos($resultLine, 'tests') === false)
+        {
+            $resultLine = array_pop($result);
+            if((time() - $start) > 30)
+                break;
+        }
+
+        return $resultLine;
+    }
+
+    /**
     * @param $test
     * @param array $flags
     * @return mixed
