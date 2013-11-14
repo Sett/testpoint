@@ -94,16 +94,8 @@ class TestPoint
             $this->say($this->colorText('Run ', 'bold') . $test);
             $result  = $this->exec($test);
             $logData = array_merge($logData, $result);
-            $resultLine  = array_pop($result);
-
-            $start = time();
-
-            while(strpos($resultLine, 'tests') === false)
-            {
-                $resultLine = array_pop($result);
-                if((time() - $start) > 30)// to avoide unreached cycles
-                    break;
-            }
+            
+            $resultLine  = $this->getResultLine($result);
             
             $this->log($player, $this->analyse($resultLine));
         }
