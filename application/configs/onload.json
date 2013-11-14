@@ -20,9 +20,9 @@
             "db":
             {
                 "host": "localhost",
-                "user": "phpastra",
-                "password": "phpastra",
-                "db name": "test-ocwebastra",
+                "user": "tp",
+                "password": "tp",
+                "db name": "test-tp",
                 "table name": "test_log"
             }
         }
@@ -50,7 +50,8 @@
                 "host" : "localhost",
                 "user" : "tp",
                 "password" : "tp",
-                "db" : "testpoint"
+                "db" : "test-tp",
+                "table name": "test_results"
             }
         }
     },
