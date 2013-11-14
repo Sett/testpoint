@@ -53,6 +53,11 @@ class TestPoint
      * @var bool
      */
     public $logExec = false;
+    
+    /**
+     * @var string
+     */
+    public $player = '';    
 
     /**
      * @param string $player
@@ -62,6 +67,7 @@ class TestPoint
      */
     public function __construct($player = '', $tests = [], $logExec = false, $onLoadConfig = '')
     {
+        $this->player = $player;
         $this->say('Constructing TestPoint for "' . $player . '"', 'h1');
         
         $config = $onLoadConfig ? $onLoadConfig : __DIR__ . '/application/configs/onload.json';
