@@ -5,6 +5,12 @@
 trait Mode_Talk
 {
     /**
+     * End Of Line
+     * @var string
+     */
+    public $eol = "\n";    
+    
+    /**
      * @var array
      */
     public $colors = [
