@@ -39,9 +39,9 @@ class TestPoint
     PHPUnit,
     
     /**
-     * TestPoint mode: talk or silence
+     * TestPoint talking: on or off
      */
-    Mode;
+    Talk;
     
 
     /**
