@@ -1,6 +1,6 @@
 <?php
 
-trait TP
+trait TestPoint
 {
     /**
      * @var string
