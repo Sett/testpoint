@@ -17,6 +17,7 @@ trait Config
     use Config_Log,
         Config_Test,
         Config_Mode,
+        Config_Talk,
         Config_Store,
         Config_Traits,
         Config_PHPUnit;
