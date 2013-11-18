@@ -3,7 +3,7 @@
 Версия 0.0.start.3
 
 1. Трейт информирования о ходе тестирования переименован из Mode в Talk, т.к. более подходит к рализуемому им функционалу.
-2. Доработан менеджер сборок, теперь он может подключать сразу и вложенные трейты (см. [Manager](https://github.com/Sett/testpoint/wiki/TestPoint_Manager)).
+2. Доработан менеджер сборок, теперь он может подключать сразу и вложенные трейты (см. [Manager](https://github.com/Sett/testpoint/wiki/TestPoint_Manager) и [тут](https://github.com/Sett/testpoint/wiki/%D0%A4%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F-TestPoint'a)).
 3. Настройки для сборки вынесены из общего конфига "onload.json" в отдельный - "compile.json". 
 4. В связи с пунктом 3, удалён трейт Config_Traits за ненадобностью.
 
