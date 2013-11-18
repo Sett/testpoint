@@ -1,0 +1,44 @@
+{
+    "path":
+    {
+        "class":"/modules/lib/",
+        "trait":"/modules/"
+    },
+
+    "traits":
+    [
+        "TestPoint",
+        {
+            "name":"Config",
+
+            "traits":
+            [
+                "Log",
+                "Mode",
+                "PHPUnit",
+                "Store",
+                "System",
+                "Talk",
+                "Test",
+                "Traits"
+            ]
+        },
+        "File",
+        {
+            "name": "Log_Db_Mysql",
+            "class": ["Mysql"]
+        },
+        "Test",
+        {
+            "name": "PHPUnit",
+            "traits" :
+            [
+                "Analyse"
+            ]
+        },
+        {
+            "name": "Talk",
+            "traits": ["Console"]
+        }
+    ]
+}
