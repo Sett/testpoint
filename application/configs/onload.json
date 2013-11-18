@@ -1,14 +1,5 @@
 {
-    "traits" :
-    [
-        "TP",
-        "Config",
-        "File",
-        "Log_File_Json",
-        "Test",
-        "PHPUnit",
-        "Mode"
-    ],
+    "talk" : "on",
 
     "system" :
     {
@@ -55,8 +46,7 @@
             }
         }
     },
-
-    "mode" : "talk",
+    
     "test" :
     {
         "skipTests" :[],
