@@ -83,7 +83,7 @@ trait Mode_Talk
      */
     public function output($singlePhrase = '')
     {
-        if($this->mode == 'talk')
+        if($this->talk == 'on')
         {
             if($singlePhrase)
                 echo $singlePhrase;
