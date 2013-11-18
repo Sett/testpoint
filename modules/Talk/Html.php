@@ -1,8 +1,8 @@
 <?php
 /**
- * Class Mode_Talk_Html
+ * Class Talk_Html
  */
-trait Mode_Talk_Html
+trait Talk_Html
 {
     /**
      * @var string
@@ -72,7 +72,7 @@ trait Mode_Talk_Html
      */
     public function output($singlePhrase = '')
     {
-        if($this->mode == 'talk')
+        if($this->talk == 'on')
         {
             if($singlePhrase)
                 file_put_contents('output' . time() .'.html',
