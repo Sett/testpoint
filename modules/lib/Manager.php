@@ -60,12 +60,12 @@ class TestPoint_Manager
             }
 
             $use     .= $name ? $name : '';
-            $require .= $name ? "require_once '" . $traitBasePath . $name . ".php';\n" : '';
+            $require .= $name ? "require_once '" . $traitBasePath . self::convertName($name) . ".php';\n" : '';
         }
         elseif(is_string($traits))
         {
             $use     = $traits;
-            $require = "require_once '" . $traitBasePath . $traits . ".php';\n";
+            $require = "require_once '" . $traitBasePath . self::convertName($traits) . ".php';\n";
         }
 
         return ['use' => $use, 'require' => $require];
