@@ -5,7 +5,7 @@
 trait ArrayLib
 {
     /**
-     * @param array $array
+     * @param array $array source array
      * @param string $kvGlue
      * @param string $startElGlue
      * @param string $endElGlue
