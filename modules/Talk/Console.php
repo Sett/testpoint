@@ -2,7 +2,7 @@
 /**
  * Class Mode_Talk
  */
-trait Mode_Talk
+trait Talk_Console
 {
     /**
      * End Of Line
