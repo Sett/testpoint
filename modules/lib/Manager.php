@@ -7,23 +7,24 @@ class TestPoint_Manager
     /**
      * @param string $resultClassName
      * @param string $cfgPath
-     * @param string $traitBasePath
      */
-    public static function compile($resultClassName = '', $cfgPath = '', $traitBasePath = '/')
+    public static function compile($resultClassName = '', $cfgPath = '')
     {
-        $cfg = json_decode(file_get_contents($cfgPath), true);
-        $traits = isset($cfg['traits']) ? $cfg['traits'] : [];
+        $cfg           = json_decode(file_get_contents($cfgPath), true);
+        $traits        = self::getTraits($cfg);
+        $traitBasePath = self::getPath('trait', $cfg);
+        $classBasePath = self::getPath('class', $cfg);
 
-        $use = 'use ';
+        $use     = 'use ';
         $require = '';
-        $count = count($traits)-1;
+        $count   = count($traits)-1;
 
         foreach($traits as $index => $trait)
         {
             $quot = ($count == $index) ? ';' : ', ' . "\n\t";
-            $sub = self::subTraits($trait);
+            $sub  = self::subTraits($trait, $traitBasePath, $classBasePath);
 
-            $use .= $sub['use'] . $quot;
+            $use     .= $sub['use'] . $quot;
             $require .= $sub['require'];
         }
 
@@ -37,35 +38,47 @@ class TestPoint_Manager
     /**
      * @param string|array $traits
      * @param string $traitBasePath
+     * @param string $classBasePath
      * @return string
      */
-    public static function subTraits($traits, $traitBasePath = '')
+    public static function subTraits($traits, $traitBasePath = '', $classBasePath = '')
     {
-        $use = '';
+        $use     = '';
         $require = '';
 
         if(is_array($traits))
         {
-            $name = self::getName($traits);
+            $name      = self::getName($traits);
             $subTraits = self::getTraits($traits);
+            $require  .= self::getClasses($traits, $classBasePath);
 
             foreach($subTraits as $trait)
             {
-                $sub = self::subTraits($trait, $traitBasePath . $name . '/');// send a parent in the path
-                $use .= $name . '_' . $sub['use'] . ', ' . "\n\t";// Name_SubTrait,
+                $sub      = self::subTraits($trait, $traitBasePath . $name . '/');// send a parent in the path
+                $use     .= $name . '_' . $sub['use'] . ', ' . "\n\t";// Name_SubTrait,
                 $require .= $sub['require'];
             }
 
-            $use .= $name ? $name : '';
+            $use     .= $name ? $name : '';
             $require .= $name ? "require_once '" . $traitBasePath . $name . ".php';\n" : '';
         }
         elseif(is_string($traits))
         {
-            $use = $traits;
+            $use     = $traits;
             $require = "require_once '" . $traitBasePath . $traits . ".php';\n";
         }
 
         return ['use' => $use, 'require' => $require];
+    }
+
+    /**
+     * @param string $what
+     * @param array $cfg
+     * @return string
+     */
+    public static function getPath($what = '' , array $cfg)
+    {
+        return isset($cfg['path'][$what]) ? $cfg['path'][$what] : '';
     }
 
     /**
@@ -76,6 +89,24 @@ class TestPoint_Manager
     {
         return isset($data['traits']) ? $data['traits'] : [];
     }
+
+    /**
+     * @param array $data
+     * @param string $classBasePath
+     * @return string
+     */
+    public static function getClasses(array $data, $classBasePath)
+    {
+        $libs = isset($data['class']) ? $data['class'] : [];
+
+        $require = '';
+
+        foreach($libs as $lib)
+            $require .= "require_once '" . $classBasePath . $lib . ".php';\n";
+
+        return $require;
+    }
+
 
     /**
      * @param array $data
