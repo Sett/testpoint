@@ -1,27 +1,10 @@
 <?php
-
-$cfgSections = glob(__DIR__ . '/Config/*.php');
-foreach($cfgSections as $section)
-{
-    require_once 'Config/' . basename($section);
-}
-
-require_once 'File.php';
-
 /**
  * Class Config
  * @use File
  */
 trait Config
 {
-    use Config_Log,
-        Config_Test,
-        Config_Mode,
-        Config_Talk,
-        Config_Store,
-        Config_Traits,
-        Config_PHPUnit;
-
     public $config = null;
   
     public function applyConfig($path)
