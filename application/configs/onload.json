@@ -4,7 +4,7 @@
     "system" :
     {
         "title": "TestPoint",
-        "version": "0.0.start.3",
+        "version": "0.0.start.4",
         "log":
         {
             "engine": "db",
