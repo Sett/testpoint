@@ -21,7 +21,7 @@ class TestPoint_Manager
 
         foreach($traits as $index => $trait)
         {
-            $quot = ($count == $index) ? ';' : ', ' . "\n\t";
+            $quot = ($count == $index) ? ';' : ', ' . "\n\t\t";
             $sub  = self::subTraits($trait, $traitBasePath, $classBasePath);
 
             $use     .= $sub['use'] . $quot;
@@ -52,10 +52,14 @@ class TestPoint_Manager
             $subTraits = self::getTraits($traits);
             $require  .= self::getClasses($traits, $classBasePath);
 
+            $out      = self::getOutTraits($traits);
+            $use     .= $out['use'];
+            $require .= $out['require'];
+
             foreach($subTraits as $trait)
             {
                 $sub      = self::subTraits($trait, $traitBasePath . $name . '/');// send a parent in the path
-                $use     .= $name . '_' . $sub['use'] . ', ' . "\n\t";// Name_SubTrait,
+                $use     .= $name . '_' . $sub['use'] . ', ' . "\n\t\t";// Name_SubTrait,
                 $require .= $sub['require'];
             }
 
@@ -66,6 +70,26 @@ class TestPoint_Manager
         {
             $use     = $traits;
             $require = "require_once '" . $traitBasePath . self::convertName($traits) . ".php';\n";
+        }
+
+        return ['use' => $use, 'require' => $require];
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    public static function getOutTraits($data)
+    {
+        $outTraits = isset($data['outTraits']) ? $data['outTraits'] : [];
+
+        $require = '';
+        $use = '';
+
+        foreach($outTraits as $trait => $path)
+        {
+            $require .= "require_once '" . $path . "';\n";
+            $use .= $trait . ', ' . "\n\t\t";
         }
 
         return ['use' => $use, 'require' => $require];
