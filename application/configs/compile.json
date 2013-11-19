@@ -1,8 +1,8 @@
 {
     "path":
     {
-        "class":"/modules/lib/",
-        "trait":"/modules/"
+        "class":"modules/lib/",
+        "trait":"modules/"
     },
 
     "traits":
@@ -27,6 +27,7 @@
             "name": "Log_Db_Mysql",
             "class": ["Mysql"]
         },
+        "ArrayLib",
         "Test",
         {
             "name": "PHPUnit",
