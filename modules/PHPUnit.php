@@ -27,21 +27,9 @@
 
  -d key[=value]            Sets a php.ini value.
 */
-require_once 'PHPUnit/Analyse.php';
-require_once 'ArrayLib.php';
- 
+
 trait PHPUnit
 {
-    /**
-     *
-     */
-    use PHPUnit_Analyse;
-
-    /**
-     * @method array_glue($array, $kvGlue, $startElGlue, $endElGlue)
-     */
-    use ArrayLib;
-
     /**
      * @param array $result
      * @return mixed
