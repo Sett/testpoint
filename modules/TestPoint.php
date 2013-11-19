@@ -13,19 +13,50 @@ trait TestPoint
     public $logExec = false;
 
     /**
+     * @var string
+     */
+    public $player = '';
+
+    /**
      * @param string $player
      * @param array|string $tests tests names or a directory name, where tests are stored
      * @param bool $logExec
+     * @param string $onLoadConfig path/to/file
      */
-    public function __construct($player = '', $tests = [], $logExec = false)
+    public function __construct($player = '', $tests = [], $logExec = false, $onLoadConfig = '')
     {
+        $this->player = $player;
         $this->say('Constructing TestPoint for "' . $player . '"', 'h1');
-        $this->applyConfig(__DIR__ . '/../application/configs/onload.json');
+
+        $config = $onLoadConfig ? $onLoadConfig : __DIR__ . '/../application/configs/onload.json';
+
+        $this->applyConfig($config);
+
         $tests = $this->getTests($tests);
         $this->logExec = $logExec;
 
         if($player && count($tests))
-            $this->run($player, $tests);
+            $this->runMulti($player, $tests);
+    }
+
+    public function runMulti($player, $tests)
+    {
+        $this->say('Start test(s)', 'h1')
+            ->say($this->colorText('Run ', 'bold') . $tests);
+
+        $result     = $this->exec($tests);
+        $resultLine = $this->getResultLine($result);
+
+        $this->say('Results', 'h2');
+        $this->log($player, $this->analyse($resultLine));
+
+        if($this->logExec)
+        {
+            $this->say('Log', 'h2')->say('Logging testing output into ' . $this->colorText($this->execLog, 'underline'));
+            file_put_contents($this->execLog, "[" . date('Y-m-d H:i:s') . "]\n" . implode("\n", $result) . "\n\n");
+        }
+
+        $this->output();
     }
 
     /**
@@ -39,18 +70,24 @@ trait TestPoint
 
         foreach($tests as $test)
         {
-            $this->say('Run ' . $test);
-            $result = $this->exec($test);
+            $this->say($this->colorText('Run ', 'bold') . $test);
+
+            $result  = $this->exec($test);
             $logData = array_merge($logData, $result);
-            $result = array_pop($result);
-            $this->log($player, $this->analyse($result));
+
+            $resultLine  = $this->getResultLine($result);
+
+            $this->say('Results', 'h2');
+            $this->log($player, $this->analyse($resultLine));
         }
 
         if($this->logExec)
         {
-            $this->say('Logging testing output into ' . $this->execLog, 'endOfEpisode');
+            $this->say('Log', 'h2')->say('Logging testing output into ' . $this->colorText($this->execLog, 'underline'));
             file_put_contents($this->execLog, "[" . date('Y-m-d H:i:s') . "]\n" . implode("\n", $logData) . "\n\n");
         }
+
+        $this->output();
     }
 
     /**
@@ -60,8 +97,9 @@ trait TestPoint
     public function log($player, $result)
     {
         $log = $this->getLog();
+
         if(!isset($log[$player]))
-            $log[$player] = ['points' => 0, 'log' => []];
+            $log[$player] = $this->newLogItem($player);
 
         if($result['OK'])
             $log = $this->logOk($log, $result, $player);
