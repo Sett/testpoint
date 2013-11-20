@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Result Analyser 
+ */
 trait PHPUnit_Analyse
 {
     /**
