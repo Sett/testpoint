@@ -3,6 +3,8 @@ Test Point
 
 Gain points for tests
 
+## tpsett.wordpress.com
+
 ## [Ru]
 
 Игрофикация юнит тестирования кода на PHP (дописать до нужного языка - раз плюнуть).
