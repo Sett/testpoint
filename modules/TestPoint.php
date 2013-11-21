@@ -5,16 +5,6 @@ trait TestPoint
     /**
      * @var string
      */
-    public $execLog = 'log.json';
-
-    /**
-     * @var bool
-     */
-    public $logExec = false;
-
-    /**
-     * @var string
-     */
     public $player = '';
 
     /**
@@ -49,13 +39,7 @@ trait TestPoint
 
         $this->say('Results', 'h2');
         $this->log($player, $this->analyse($resultLine));
-
-        if($this->logExec)
-        {
-            $this->say('Log', 'h2')->say('Logging testing output into ' . $this->colorText($this->execLog, 'underline'));
-            file_put_contents($this->execLog, "[" . date('Y-m-d H:i:s') . "]\n" . implode("\n", $result) . "\n\n");
-        }
-
+        $this->event('testing output', $result);
         $this->output();
     }
 
@@ -81,12 +65,7 @@ trait TestPoint
             $this->log($player, $this->analyse($resultLine));
         }
 
-        if($this->logExec)
-        {
-            $this->say('Log', 'h2')->say('Logging testing output into ' . $this->colorText($this->execLog, 'underline'));
-            file_put_contents($this->execLog, "[" . date('Y-m-d H:i:s') . "]\n" . implode("\n", $logData) . "\n\n");
-        }
-
+        $this->event('testing output', $logData);
         $this->output();
     }
 
