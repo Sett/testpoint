@@ -127,7 +127,7 @@ class TestManager
 
  Gained 36 point(s)
  Now 36 points
- Save results into test-db: test_results
+ Save results into test-tp: test_results
 
  Rised event "testing output"
 
