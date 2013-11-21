@@ -5,6 +5,7 @@
     {
         "title": "TestPoint",
         "version": "0.0.start.5",
+        "player": "sett",
         "log":
         {
             "engine": "db",
@@ -21,8 +22,11 @@
 
     "event":
     {
-        "testing output" :["logTestingOutput"],
-        "the end" : ["output"]
+        "testing output" : ["logTestingOutput"],
+        "the end" : ["output"],
+        "start test" : ["startTestTalk"],
+        "run test" : ["runTestTalk"],
+        "results" : ["resultsTalk"]
     },
 
     "log" :
