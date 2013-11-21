@@ -22,6 +22,9 @@ trait Config_System
                     $this->{$data['log']['engine'] . 'SystemLog'}($data['log'][$data['log']['engine']]);
             }
         }
+        
+        if(isset($data['player']))
+            $this->player = $data['player'];
     }
 
     /**
