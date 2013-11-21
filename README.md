@@ -3,7 +3,7 @@ Test Point
 
 Gain points for tests
 
-## tpsett.wordpress.com
+## http://tpsett.wordpress.com
 
 ## [Ru]
 
