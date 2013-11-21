@@ -17,8 +17,6 @@ trait Event
      */
     public function event($name = '', $context = null)
     {
-        $this->say('Rised event "' . $name . '"');
-
         if(isset($this->eventListener[$name]))
         {
             foreach($this->eventListener[$name] as $listener)
