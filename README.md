@@ -12,7 +12,7 @@ Gain points for tests
 Если все кейсы теста проходят успешно - разработчик получает по 1 очку за каждый кейс.
 Если какой-то кейс валится - разработчик теряет по 1 очку за каждый отвалившийся кейс (при этом за удачные кейсы, разработчик в этом случае, ничего не получает).
 
-На этапе самотестирования (т.е. это до альфа-версии альфа-версии) результаты скалдываются в json-файлик.
+На этапе самотестирования результаты скалдываются в базу MySQL.
 
 ## [Как это использовать]
 
@@ -28,119 +28,118 @@ $testPoint = new TestPoint('developer name', ['path/to/test/1', 'path/to/test/2'
 ```
 
 Как видно, использовать можно по крону или любому таймеру, какой у вас используется, например, при CI.
-Результаты сейчас выглядят примерно так:
 
-<?php
+На текущем этапе сразу готового класса TestPoint у вас нет - его нужно собрать. Для этого используется Менеджер сборки, подробнее о нём вы можете прочитать [здесь](https://github.com/Sett/testpoint/wiki/TestPoint_Manager).
 
-``` $testPoint = new TestPoint('sett', ['path/to/Mytest.php']);```
-
-Result:
-<pre>
-  {
-    "sett":
-    {
-      "points":8,
-      "log":
-      [
-        {"status":"WIN","datetime":"текущая дата","points":"3"},
-        {"status":"WIN","datetime":"текущая дата","points":"3"},
-        {"status":"lose","datetime":"текущая дата","points":"1","possible":"3"},
-        {"status":"WIN","datetime":"текущая дата","points":"3"}
-      ]
-    }
-  }
-</pre>
-
-## [Try me]
+## [Man]
 
 Самый простой способ попробовать TestPoint:
 
 * Клонируем этот репозиторий.
-* Запускаем tryme.php: "`php tryme.php`".
+* Запускаем man.php: "`php man.php`". Он лежит в папке `example`.
 
 Если у вас установлен PHPUnit и есть рнр >= 5.4, то после запуска у вас:
 
 * В консоли отобразится ход "игры":
 
 ```
-/var/www/testpoint$ php tryme.php 
+/var/www/testpoint$ php example/man.php 
+
+<?php
+
+require_once 'modules/TestPoint.php';
+require_once 'modules/Config/Log.php';
+require_once 'modules/Config/Mode.php';
+require_once 'modules/Config/PHPUnit.php';
+require_once 'modules/Config/Store.php';
+require_once 'modules/Config/System.php';
+require_once 'modules/Config/Talk.php';
+require_once 'modules/Config/Test.php';
+require_once 'modules/Config/Event.php';
+require_once 'modules/Config.php';
+require_once 'modules/File.php';
+require_once 'modules/lib/Mysql.php';
+require_once 'modules/Log/Db/Mysql.php';
+require_once 'modules/Test.php';
+require_once 'modules/ArrayLib.php';
+require_once 'modules/PHPUnit/Analyse.php';
+require_once 'modules/PHPUnit.php';
+require_once 'modules/Talk/Console.php';
+require_once 'modules/Talk.php';
+require_once 'modules/Event.php';
+
+class TestManager
+{
+        use TestPoint, 
+                Config_Log, 
+                Config_Mode, 
+                Config_PHPUnit, 
+                Config_Store, 
+                Config_System, 
+                Config_Talk, 
+                Config_Test, 
+                Config_Event, 
+                Config, 
+                File, 
+                Log_Db_Mysql, 
+                Test, 
+                ArrayLib, 
+                PHPUnit_Analyse, 
+                PHPUnit, 
+                Talk_Console, 
+                Talk, 
+                Event;
+}
+
+  =====| System information: TestPoint v.0.0.start.5 | 14:52:49 |=====
+
 
   =====| Constructing TestPoint for "sett" |=====
 
+
     ===| Applying config sections |===
-    
- - log
- - store
- - mode
- - test
 
-Tests for playing: /var/www/testPoint/tests/TestPointTest.php
+  - talk
+  - log
+  - event
+  - system
+  - store
+  - test
+  - phpunit
 
-    ===| Start test(s) |===
-  
-Run /var/www/testPoint/tests/TestPointTest.php
-Gained 3 point(s)
-Save results into records.json
+ Tests for playing: 
 
-Logging testing output into log.json
+ in /var/www/testPoint/testpoint/tests/
+
+  =====| Start test(s) |=====
+
+ Run /var/www/testPoint/testpoint/tests/
+
+    ===| PHPUnit |===
+
+ Flags:
+        --coverage-html pu-coverage-php.html
+        --testdox-html pu-doc.html
+        --process-isolation
+        --bootstrap path/to/bootstrap
+
+    ===| Results |===
+
+ Gained 36 point(s)
+ Now 36 points
+ Save results into test-db: test_results
+
+ Rised event "testing output"
+
+  =====| Finish in 12 second(s) |=====
 
 ```
 
-* Должен появиться файлик `records.json`: 
-
-
-```
-{
-    "correct test":
-    {
-        "points":1,
-        "log":[{"status":"WIN","datetime":"<текущая дата>","points":"1"}]
-    },
-    "failed test":
-    {
-        "points":-1,"log":[{"status":"lose","datetime":"<текущая дата>","points":1,"possible":"1"}]
-    },
-    "sett":
-    {
-        "points":3,
-        "log":[{"status":"WIN","datetime":"<текущая дата>","points":"3"}]
-    }
-}
-```
-
-* Должен появиться лог `log.json`:
+* Должен появиться лог `log.txt`:
 
 ```
 [<текущая дата>]
 PHPUnit 3.6.10 by Sebastian Bergmann.
-
-.
-=====| Constructing TestPoint for "correct test" |=====
-
-===| Applying config sections |===
-
- - log
- - store
- - mode
- - test
- 
-
-Tests for playing: /var/www/testpoint/tests/TestExample
-
-===| Start test(s) |===
-
-Run /var/www/testpoint/tests/TestExample
-Gained 1 point(s)
-Save results into records.json
-
-.
-=====| Constructing TestPoint for "failed test" |=====
-Tests for playing: /var/www/testpoint/tests/TestIncorrect
-
-===| Start test(s) |===
-Run /var/www/testPoint/tests/TestIncorrect
-Losing 1 point(s)
-Save results into records.json
 
 .
 
