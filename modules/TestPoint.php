@@ -39,8 +39,7 @@ trait TestPoint
 
         $this->say('Results', 'h2');
         $this->log($player, $this->analyse($resultLine));
-        $this->event('testing output', $result);
-        $this->output();
+        $this->event('testing output', $result)->event('the end');
     }
 
     /**
@@ -65,8 +64,7 @@ trait TestPoint
             $this->log($player, $this->analyse($resultLine));
         }
 
-        $this->event('testing output', $logData);
-        $this->output();
+        $this->event('testing output', $logData)->event('the end');
     }
 
     /**
