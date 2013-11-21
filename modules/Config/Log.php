@@ -24,7 +24,5 @@ trait Config_Log
         }
         else
             $this->logExec = false;
-
-        $this->listen('testing output', 'logTestingOutput');// event, listener
     }
 }
