@@ -12,9 +12,10 @@ trait Event
 
     /**
      * @param string $name
-     * @param $context
+     * @param mixed $context
+     * @return $this
      */
-    public function event($name = '', $context)
+    public function event($name = '', $context = null)
     {
         $this->say('Rised event "' . $name . '"');
 
@@ -26,11 +27,14 @@ trait Event
                     $this->$listener($context);
             }
         }
+
+        return $this;
     }
 
     /**
      * @param string $event
      * @param string $listener
+     * @return $this
      */
     public function listen($event = '', $listener = '')
     {
@@ -38,5 +42,7 @@ trait Event
             $this->eventListener[$event] = [];
 
         $this->eventListener[$event][] = $listener;
+
+        return $this;
     }
 }
