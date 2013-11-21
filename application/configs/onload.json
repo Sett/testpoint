@@ -21,7 +21,8 @@
 
     "event":
     {
-        "testing output" :["logTestingOutput"]
+        "testing output" :["logTestingOutput"],
+        "the end" : ["output"]
     },
 
     "log" :
