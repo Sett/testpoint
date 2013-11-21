@@ -8,6 +8,8 @@
     "traits":
     [
         "TestPoint",
+        "Event",
+        "Log",
         {
             "name":"Config",
 
