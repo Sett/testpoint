@@ -15,14 +15,15 @@
 
             "traits":
             [
+                
+                "Event",
                 "Log",
                 "Mode",
                 "PHPUnit",
                 "Store",
                 "System",
                 "Talk",
-                "Test",
-                "Event"
+                "Test"
             ]
         },
         "File",
