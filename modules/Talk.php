@@ -10,7 +10,7 @@ trait Talk
     public $talk = 'on';
 
     /**
-     *
+     * @event start test
      */
     public function startTestTalk()
     {
@@ -18,6 +18,7 @@ trait Talk
     }
 
     /**
+     * @event run test
      * @param string $test
      */
     public function runTestTalk($test = '')
@@ -26,7 +27,7 @@ trait Talk
     }
 
     /**
-     *
+     * @event results
      */
     public function resultsTalk()
     {
