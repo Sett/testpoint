@@ -5,6 +5,7 @@
 trait Log
 {
     /**
+     * @event testing output
      * @param array|string $output
      */
     public function logTestingOutput($output)
