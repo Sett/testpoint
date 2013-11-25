@@ -31,22 +31,4 @@ trait TestPoint
              ->event('testing output', $this->getEventResult('run test'))
              ->event('the end');
     }
-
-    /**
-     * @param array $result
-     */
-    public function log($result)
-    {
-        $log = $this->getLog();
-
-        if(!isset($log[$this->player]))
-            $log[$this->player] = $this->newLogItem($this->player);
-
-        if($result['OK'])
-            $log = $this->logOk($log, $result, $this->player);
-        else
-            $log = $this->logFail($log, $result, $this->player);
-
-        $this->addToLog($log);
-    }
 }
