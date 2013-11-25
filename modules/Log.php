@@ -19,4 +19,23 @@ trait Log
             file_put_contents($this->execLogFile, "[" . date('Y-m-d H:i:s') . "]\n" . $output . "\n\n");
         }
     }
+    
+    
+    /**
+     * @param array $result
+     */
+    public function log($result)
+    {
+        $log = $this->getLog();
+
+        if(!isset($log[$this->player]))
+            $log[$this->player] = $this->newLogItem($this->player);
+
+        if($result['OK'])
+            $log = $this->logOk($log, $result, $this->player);
+        else
+            $log = $this->logFail($log, $result, $this->player);
+
+        $this->addToLog($log);
+    }
 }
