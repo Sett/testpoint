@@ -24,15 +24,12 @@ trait TestPoint
      */
     public function run($tests)
     {
-        $this->event('start test', [$this->player, $tests])->event('run test', $tests);
-
-        $result     = $this->exec($tests);
-        $resultLine = $this->getResultLine($result);
-
-        $this->event('results', $resultLine);
-        $this->log($this->player, $this->analyse($resultLine));
-
-        $this->event('testing output', $result)->event('the end');
+        $this->event('start test', [$this->player, $tests])
+             ->event('run test', $tests)
+             ->event('test result', $this->getEventResult('run test'))
+             ->event('results', $this->getEventResult('test result'))
+             ->event('testing output', $this->getEventResult('run test'))
+             ->event('the end');
     }
 
     /**
