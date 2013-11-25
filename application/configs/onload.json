@@ -22,11 +22,12 @@
 
     "event":
     {
+        "start test"     : ["startTestTalk"],
+        "run test"       : ["runTestTalk", "exec"],
+        "test result"    : ["getResultLine"],
+        "results"        : ["resultsTalk", "analyse", "log"],
         "testing output" : ["logTestingOutput"],
-        "the end" : ["output"],
-        "start test" : ["startTestTalk"],
-        "run test" : ["runTestTalk"],
-        "results" : ["resultsTalk"]
+        "the end"        : ["output"]
     },
 
     "log" :
