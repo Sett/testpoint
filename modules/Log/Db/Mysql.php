@@ -70,7 +70,8 @@ trait Log_Db_Mysql
      */
     public function logOk($log, $result, $player)
     {
-        // todo: prepare data for a db
+        $result['data']  = isset($result['data']) ? $result['data'] : 0;
+        $lastTestingTime = isset($log[$player]['datetime']) ? $log[$player]['datetime'] : time();
         $points = $this->truePoints($log[$player]['points'] + $result['data'], $log[$player]['datetime']);
 
         $log[$player] = [
