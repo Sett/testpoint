@@ -80,7 +80,7 @@ trait PHPUnit
         $flag = $this->getFlagInfo($name, '', true);
 
         if(isset($flag['turn']) && ($flag['turn'] == 'on'))
-            return '--' . $name . '-' . $flag['type'] . ' ' . $flag['fileName'];
+            return '--' . $name . '-' . $flag['type'] . ' ' . __DIR__ . '/../' . $flag['fileName'];
 
         return '';
     }
