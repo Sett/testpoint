@@ -32,7 +32,7 @@ class TestPoint_Manager
 
         echo "\n\n" . $result . "\n\n";
 
-        file_put_contents($resultClassName . '.php', $result);
+        file_put_contents(__DIR__ . '/../../' . $resultClassName . '.php', $result);
     }
 
     /**
@@ -64,12 +64,12 @@ class TestPoint_Manager
             }
 
             $use     .= $name ? $name : '';
-            $require .= $name ? "require_once '" . $traitBasePath . self::convertName($name) . ".php';\n" : '';
+            $require .= $name ? "require_once '" . __DIR__ . '/../../' . $traitBasePath . self::convertName($name) . ".php';\n" : '';
         }
         elseif(is_string($traits))
         {
             $use     = $traits;
-            $require = "require_once '" . $traitBasePath . self::convertName($traits) . ".php';\n";
+            $require = "require_once '" . __DIR__ . '/../../' . $traitBasePath . self::convertName($traits) . ".php';\n";
         }
 
         return ['use' => $use, 'require' => $require];
@@ -88,7 +88,7 @@ class TestPoint_Manager
 
         foreach($outTraits as $trait => $path)
         {
-            $require .= "require_once '" . $path . "';\n";
+            $require .= "require_once '" . __DIR__ . '/../../' . $path . "';\n";
             $use .= $trait . ', ' . "\n\t\t";
         }
 
@@ -126,7 +126,7 @@ class TestPoint_Manager
         $require = '';
 
         foreach($libs as $lib)
-            $require .= "require_once '" . $classBasePath . $lib . ".php';\n";
+            $require .= "require_once '" . __DIR__ . '/../../' . $classBasePath . $lib . ".php';\n";
 
         return $require;
     }
