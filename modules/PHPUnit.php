@@ -96,7 +96,7 @@ trait PHPUnit
         $value  = $this->getFlagInfo('self', $name);// "phpunit" : { "self" : {$name : $value} }
         $result = ($value != '') ? '--' . $name : '';
 
-        return $useFlag ? $result . ' ' . $value . ' ' : $result . ' ';
+        return $useFlag ? $result . ' ' . __DIR__ . '/../' . $value . ' ' : $result . ' ';
     }
 
     /**
