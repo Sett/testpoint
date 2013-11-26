@@ -8,6 +8,7 @@
     "traits":
     [
         "TestPoint",
+        "Pathfinder",
         "Event",
         "Log",
         {
