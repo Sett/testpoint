@@ -8,9 +8,9 @@ class TestPoint_Manager
      * @param string $resultClassName
      * @param string $cfgPath
      */
-    public static function compile($resultClassName = '', $cfgPath = '')
+    public static function compile($resultClassName = '', $cfgPath = '', $cfgType = 'json')
     {
-        $cfg           = json_decode(file_get_contents($cfgPath), true);
+        $cfg           = $this->getConfig($cfgPath, $cfgType);
         $traits        = self::getTraits($cfg);
         $traitBasePath = self::getPath('trait', $cfg);
         $classBasePath = self::getPath('class', $cfg);
@@ -33,6 +33,19 @@ class TestPoint_Manager
         echo "\n\n" . $result . "\n\n";
 
         file_put_contents(__DIR__ . '/../../' . $resultClassName . '.php', $result);
+    }
+    
+    /**
+     * @param string $path
+     * @param string $type
+     * return array
+     */
+    public function getConfig($path = '', $type = 'json')
+    {
+        if($type == 'json')
+            return json_decode(file_get_contents($path), true);
+            
+        return require_once $path;
     }
 
     /**
