@@ -7,10 +7,11 @@ class TestPoint_Manager
     /**
      * @param string $resultClassName
      * @param string $cfgPath
+     * @param string $cfgType
      */
     public static function compile($resultClassName = '', $cfgPath = '', $cfgType = 'json')
     {
-        $cfg           = $this->getConfig($cfgPath, $cfgType);
+        $cfg           = self::getConfig($cfgPath, $cfgType);
         $traits        = self::getTraits($cfg);
         $traitBasePath = self::getPath('trait', $cfg);
         $classBasePath = self::getPath('class', $cfg);
@@ -40,7 +41,7 @@ class TestPoint_Manager
      * @param string $type
      * return array
      */
-    public function getConfig($path = '', $type = 'json')
+    public static function getConfig($path = '', $type = 'json')
     {
         if($type == 'json')
             return json_decode(file_get_contents($path), true);
