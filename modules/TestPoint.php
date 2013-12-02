@@ -13,7 +13,7 @@ trait TestPoint
      */
     public function __construct($testPath = '', $onLoadConfig = '')
     {
-        $config = $onLoadConfig ? $onLoadConfig : __DIR__ . '/../application/configs/onload.json';
+        $config = $onLoadConfig ? $onLoadConfig : $this->onload;
 
         $this->applyConfig($config);
         $this->run($testPath);
