@@ -9,7 +9,10 @@ return
 
     "traits" => 
     [
-        "TestPoint",
+        [
+            "name" => "TestPoint",
+            "traits" => ["Run", "Player"]
+        ],
         "Pathfinder",
         "Event",
         "Log",
