@@ -11,11 +11,9 @@ trait TestPoint
      * @param string $testPath tests names or a directory name, where tests are stored
      * @param string $onLoadConfig path/to/file
      */
-    public function __construct($testPath = '', $onLoadConfig = '')
+    public function __construct($testPath = '')
     {
-        $config = $onLoadConfig ? $onLoadConfig : $this->onload;
-
-        $this->applyConfig($config);
+        $this->applyConfig();
         $this->run($testPath);
     }
 
