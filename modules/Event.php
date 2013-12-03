@@ -5,12 +5,6 @@
 trait Event
 {
     /**
-     * event => ['action']
-     * @var array
-     */
-    public $eventListener = [];
-
-    /**
      * event => mixed result
      * @var array
      */
@@ -23,9 +17,9 @@ trait Event
      */
     public function event($name = '', $context = null)
     {
-        if(isset($this->eventListener[$name]))
+        if(isset($this->onLoad['event'][$name]))
         {
-            foreach($this->eventListener[$name] as $listener)
+            foreach($this->onLoad['event'][$name] as $listener)
             {
                 if(method_exists($this, $listener))
                     $this->eventResult[$name] = $this->$listener($context);
@@ -51,10 +45,10 @@ trait Event
      */
     public function listen($event = '', $listener = '')
     {
-        if(!isset($this->eventListener[$event]))
-            $this->eventListener[$event] = [];
+        if(!isset($this->onLoad['event'][$event]))
+            $this->onLoad['event'][$event] = [];
 
-        $this->eventListener[$event][] = $listener;
+        $this->onLoad['event'][$event][] = $listener;
 
         return $this;
     }
