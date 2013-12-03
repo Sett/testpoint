@@ -39,14 +39,14 @@ class TestPoint_Manager
     /**
      * @param string $path
      * @param string $type
-     * return array
+     * @return array
      */
     public static function getConfig($path = '', $type = 'json')
     {
         if($type == 'json')
-            return json_decode(file_get_contents($path), true);
-            
-        return require_once $path;
+            return json_decode(file_get_contents($path. '.' .$type), true);
+
+        return require_once $path . '.' . $type;
     }
 
     /**
