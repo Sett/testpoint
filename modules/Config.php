@@ -7,33 +7,20 @@ trait Config
 {
     public $config = null;
   
-    public function applyConfig($path)
+    public function applyConfig()
     {
-        if(is_null($this->config))
+        $this->say('Applying config sections', 'h2');
+        foreach($this->onload as $property => $data)
         {
-            $this->loadConfig($path);
-            return $this->applyConfig($path);
-        }
-        else
-        {
-            $this->say('Applying config sections', 'h2');
-            foreach($this->config as $property => $data)
+            if(method_exists($this, $property . 'ApplyConfig'))
             {
-                if(method_exists($this, $property . 'ApplyConfig'))
-                {
-                    $this->say(' - ' . $this->colorText($property, 'bold'));
-                    $this->{$property . 'ApplyConfig'}($data);
-                }
-                else
-                    echo 'Unknown config section "' . $property . '"' . "\n";
+                $this->say(' - ' . $this->colorText($property, 'bold'));
+                $this->{$property . 'ApplyConfig'}($data);
             }
-
-            return true;
+            else
+                echo 'Unknown config section "' . $property . '"' . "\n";
         }
-    }
-  
-    public function loadConfig($path)
-    {
-        $this->config = $this->getJson($path);
+
+        return true;
     }
 }
