@@ -4,6 +4,9 @@
  */
 trait Config_Data_OnLoad
 {
+    /**
+     * @var array
+     */
     public $onLoad = 
     [
       "talk" => "on",
@@ -11,7 +14,7 @@ trait Config_Data_OnLoad
       "system" =>
       [
           "title" => "TestPoint",
-          "version" => "0.0.start.8",
+          "version" => "0.0.start.9",
           "player" => "sett",
           "log" =>
           [
