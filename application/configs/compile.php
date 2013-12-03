@@ -13,12 +13,12 @@ return
         "Pathfinder",
         "Event",
         "Log",
+        "Config_Data_OnLoad",
         [
             "name" => "Config",
 
             "traits" => 
             [
-                "Data",
                 "Event",
                 "Log",
                 "Mode",
