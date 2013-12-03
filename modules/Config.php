@@ -5,12 +5,13 @@
  */
 trait Config
 {
-    public $config = null;
-  
+    /**
+     * @return bool
+     */
     public function applyConfig()
     {
         $this->say('Applying config sections', 'h2');
-        foreach($this->onload as $property => $data)
+        foreach($this->onLoad as $property => $data)
         {
             if(method_exists($this, $property . 'ApplyConfig'))
             {
