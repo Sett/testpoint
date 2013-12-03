@@ -13,8 +13,7 @@ trait TestPoint
      */
     public function __construct($testPath = '')
     {
-        $this->applyConfig();
-        $this->run($testPath);
+        $this->event('on load', $testPath)->run($testPath)->event('after run');
     }
 
     /**
@@ -28,5 +27,7 @@ trait TestPoint
              ->event('results', $this->getEventResult('test result'))
              ->event('testing output', $this->getEventResult('run test'))
              ->event('the end');
+             
+        return $this;
     }
 }
