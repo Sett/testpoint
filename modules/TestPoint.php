@@ -27,7 +27,5 @@ trait TestPoint
              ->event('results', $this->getEventResult('test result'))
              ->event('testing output', $this->getEventResult('run test'))
              ->event('the end');
-             
-        return $this;
     }
 }
