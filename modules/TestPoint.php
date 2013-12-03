@@ -13,7 +13,7 @@ trait TestPoint
      */
     public function __construct($testPath = '')
     {
-        $this->event('on load', $testPath)->run($testPath)->event('after run');
+        $this->event('on load', $testPath);
     }
 
     /**
