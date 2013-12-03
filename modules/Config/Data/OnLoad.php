@@ -29,6 +29,7 @@ trait Config_Data_OnLoad
   
       "event" =>
       [
+          "on load"        => ["applyConfig"],
           "start test"     => ["startTestTalk"],
           "run test"       => ["runTestTalk", "exec"],
           "test result"    => ["getResultLine"],
