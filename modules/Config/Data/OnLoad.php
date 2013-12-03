@@ -88,7 +88,7 @@ trait Config_Data_OnLoad
           [
               "turn" => "off",
               "type" => "html",
-              "fileName" => "pu-coverage.html"
+              "fileName" => "pu-coverage"
           ],
           
           "testdox" =>
