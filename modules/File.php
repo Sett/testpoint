@@ -2,6 +2,10 @@
 
 trait File
 {
+  /**
+   * @param string $path
+   * @param bool $asArray
+   */
   public function getJson($path, $asArray = true)
   {
     if(is_file($path))
