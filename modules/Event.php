@@ -1,5 +1,7 @@
 <?php
 /**
+ * Для организации событийной модели
+ * 
  * Class Event
  */
 trait Event
@@ -17,7 +19,7 @@ trait Event
      */
     public function event($name = '', $context = null)
     {
-        if(isset($this->onLoad['event'][$name]))
+        if(isset($this->onLoad['event'][$name]) && !empty($this->onLoad['event'][$name]))
         {
             foreach($this->onLoad['event'][$name] as $listener)
             {
@@ -25,6 +27,8 @@ trait Event
                     $this->eventResult[$name] = $this->$listener($context);
             }
         }
+        else
+            $this->eventResult[$name] = $context;
 
         return $this;
     }
