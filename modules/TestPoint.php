@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Инициатор
+ */
 trait TestPoint
 {
     /**
