@@ -26,6 +26,9 @@ trait Talk_Console
         'underline' => "\x1b[4m"
     ];
 
+    /**
+     * @param array
+     */
     public $talkTypes = [
         'h1' => "\n  \x1b[36;1m=====| #talk |=====\x1b[0m\n\n",
         'h2' => "\n    \x1b[32;1m===| #talk |===\x1b[0m\n\n",
