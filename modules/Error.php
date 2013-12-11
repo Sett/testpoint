@@ -37,6 +37,9 @@ trait Error
         return false;
     }
     
+    /**
+     * Dump errors into the error.log
+     */
     public function dumpErrors()
     {
         if(!empty($this->errors))
