@@ -2,6 +2,9 @@
 
 trait Error
 {
+    /**
+     * @param array
+     */
     public $errors = [];
     
     public $errorLevels = ['debug' => 0, 'notice' => 1, 'warning' => 2, 'fatal' => 3];
