@@ -8,10 +8,14 @@ trait Error
     
     public function addError($message = '', $context = null, $level = 'notice')
     {
-        $this->errors[] = [
+        $errorHash = sha1($message . json_encode($context));
+        
+        $this->errors[$errorHash] = [
             "message" => $message,
             "context" => $context,
             "level"   => $level
         ];
+        
+        return $errorHash;
     }
 }
