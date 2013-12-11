@@ -9,6 +9,11 @@ trait Config_Data_OnLoad
      */
     public $onLoad = 
     [
+      "paths" => 
+      [
+          "error log" => "/log/error.log"
+      ],    
+        
       "talk" => "on",
   
       "system" =>
