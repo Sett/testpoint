@@ -39,6 +39,7 @@ trait Error
     
     /**
      * Dump errors into the error.log
+     * @event 'the end'
      */
     public function dumpErrors()
     {
