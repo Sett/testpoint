@@ -36,4 +36,14 @@ trait Error
         
         return false;
     }
+    
+    public function dumpErrors()
+    {
+        if(!empty($this->errors))
+        {
+            $f = fopen("errors.log", "a+t");
+            fputs($f, "\n" . json_encode($this->errors) . "\n");
+            fclose($f);
+        }
+    }
 }
