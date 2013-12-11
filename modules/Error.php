@@ -41,7 +41,9 @@ trait Error
     {
         if(!empty($this->errors))
         {
-            $f = fopen("errors.log", "a+t");
+            $logPath = isset($this->onLoad['paths']['error log']) ? $this->onLoad['paths']['error log'] : 'errors.log';
+            
+            $f = fopen($logPath, "a+t");
             fputs($f, "\n" . json_encode($this->errors) . "\n");
             fclose($f);
         }
