@@ -12,6 +12,11 @@ trait Error
      */
     public $errorLevels = ['debug' => 0, 'notice' => 1, 'warning' => 2, 'fatal' => 3];
     
+    /**
+     * @param string $message
+     * @param mixed $context
+     * @param string $level
+     */
     public function addError($message = '', $context = null, $level = 'notice')
     {
         if(isset($this->errorLevels[$level]))
