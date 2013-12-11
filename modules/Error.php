@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Error
+ */
 trait Error
 {
     /**
