@@ -7,6 +7,9 @@ trait Error
      */
     public $errors = [];
     
+    /**
+     * @param array
+     */
     public $errorLevels = ['debug' => 0, 'notice' => 1, 'warning' => 2, 'fatal' => 3];
     
     public function addError($message = '', $context = null, $level = 'notice')
