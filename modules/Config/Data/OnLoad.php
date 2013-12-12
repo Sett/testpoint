@@ -43,7 +43,7 @@ trait Config_Data_OnLoad
           "test result"    => ["getResultLine"],
           "results"        => ["resultsTalk", "analyse", "log"],
           "testing output" => ["logTestingOutput"],
-          "the end"        => ["output"]
+          "the end"        => ["output", "dumpErrors"]
       ],
   
       "log" =>
